@@ -1,6 +1,6 @@
 <template>
     <div>
-        mail 444       
+        mail box      
     </div>
 </template>
 <script>
