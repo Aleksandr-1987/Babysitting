@@ -1,0 +1,13 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+#app {
+    height: 100%;
+}
+.dz-success-mark, .dz-error-mark {
+    display: none;
+}
+ul {
+    margin: 0;
+}
