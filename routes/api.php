@@ -38,6 +38,8 @@ use App\Http\Controllers\WorkPeriodController;
 use App\Http\Controllers\UserLanguagesController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CredentialController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\HelpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +60,9 @@ function ($router) {
     Route::post('me', [AuthController::class, 'me']);
 
     Route::group(['middleware' => 'jwt.auth'], function(){
+        Route::get('/admin', [HelpController::class, 'getAdmin']);
+        Route::get('/message_in', [HelpController::class, 'getMessage_in']);
+        Route::resource('/message', MessageController::class);
         Route::resource('/credential', CredentialController::class);
         Route::resource('/photo', ImageController::class);
         Route::resource('/language', LanguageController::class);

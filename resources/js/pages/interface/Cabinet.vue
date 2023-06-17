@@ -1,6 +1,5 @@
-<template>
-    <Header></Header>  
-    <div class="cabinet">
+<template>      
+    <div class="cabinet">        
         <div class="cabinet_sidebar">
             <div class="cabinet_sidebar_title">{{ user.name }}</div>
             <div @click.prevent="account" class="admin_sidebar_item">Учетная запись</div>
@@ -14,17 +13,13 @@
         <div class="cabinet_main">
             <div @click.prevent="back()" class="category_change_btn">Назад</div>
             <router-view/>        
-        </div>
+        </div>                
     </div>
 </template>
 <script>
 import {mapActions, mapState} from 'vuex';
-import Header from '../layouts/Header.vue'
 export default {
-    name: "Cabinet",
-    components: {
-        Header
-    },    
+    name: "Cabinet",        
     methods: {
         ...mapActions([
             'GET_USER', 'LOGOUT_USER' 
@@ -66,7 +61,7 @@ export default {
 </script>
 <style>
 .cabinet {
-    height: 100%;    
+    height: calc(100% - 18px);    
     display: flex;
 }
 .cabinet_sidebar {    

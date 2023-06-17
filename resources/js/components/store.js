@@ -4,6 +4,7 @@ import router from "../components/router";
 
 let store = new Vuex.Store({
     state: {
+        admin_id: 0,
         user: {},
         token: '',
         photo: '',
@@ -66,10 +67,21 @@ let store = new Vuex.Store({
         workperiods: {},
         workperiod: {},
         credentials: {},
-        credential: {}        
+        credential: {},
+        messages: {},
+        messages_in: {}        
     },
     
     mutations: {
+        SET_MESSAGES: (state, res) => {
+            state.messages = res;            
+        },
+        SET_MESSAGES_IN: (state, res) => {
+            state.messages_in = res;            
+        },
+        SET_ADMINID: (state, res) => {
+            state.admin_id = res;
+        },
         SET_TOKEN: (state, token) => {
             state.token = token;
         }, 
@@ -262,6 +274,72 @@ let store = new Vuex.Store({
     },
 
     actions: {
+        DELETE_MESSAGE({dispatch}, data){                       
+            return api.post('api/auth/message/' + data, {_method: 'DELETE'})
+                .then((res) => {
+                    dispatch('GET_MESSAGES');                  
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },        
+        GET_MESSAGES({commit}, data){
+            return api.get('api/auth/message', {params: {data}})
+                .then(res => {
+                    //console.log(res);                    
+                    commit('SET_MESSAGES', res.data);                    
+                    return res;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        GET_MESSAGES_IN({commit}, data){
+            return api.get('api/auth/message_in', {params: {data}})
+                .then(res => {
+                    //console.log(res);                    
+                    commit('SET_MESSAGES_IN', res.data);                    
+                    return res;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return error;
+                })
+        }, 
+        CREATE_MESSAGE({dispatch}, data){            
+            return api.post('api/auth/message', data)
+                .then((res) => {                    
+                    dispatch('GET_MESSAGES');
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+
+        GET_ADMIN({commit}){                                     
+            commit('SET_ADMINID', localStorage.admin_id);
+        },
+
+        GET_ADMINID({dispatch}){            
+            return api.get('api/auth/admin')
+                .then((res) => { 
+                    //console.log(res);
+                    localStorage.admin_id = res.data.id
+                    dispatch('GET_ADMIN');                   
+                    //commit('SET_ADMINID', res.data.id);
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+
         DELETE_WORKPERIOD({dispatch}, data){                       
             return api.post('api/auth/workperiod/' + data, {_method: 'DELETE'})
                 .then((res) => {
@@ -1729,9 +1807,11 @@ let store = new Vuex.Store({
                     localStorage.removeItem('access_token');
                     localStorage.removeItem('user');
                     localStorage.removeItem('user_image');
+                    localStorage.removeItem('admin_id');
                     commit('SET_TOKEN', '');
                     commit('SET_PHOTO', '');
                     commit('SET_USER', {});
+                    commit('SET_ADMINID', 0);
                     router.push({name: "Login"});                    
                     return res;
                 })

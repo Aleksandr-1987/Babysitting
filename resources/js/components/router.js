@@ -73,6 +73,18 @@ export const routes = [
         meta: {layout: 'Cabinet'},
         component: () =>import('../pages/cabinet/Change-credential.vue')
     },
+    {
+        name: 'Sent',
+        path: '/sent',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/Sent.vue')
+    },
+    {
+        name: 'Incoming',
+        path: '/incoming',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/Incoming.vue')
+    },
     /*{
         name: 'Change-user',
         path: '/change-user',

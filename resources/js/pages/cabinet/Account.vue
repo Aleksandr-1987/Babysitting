@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         ...mapActions([
-            'GET_LANGUAGES', 'GET_USER', 'GET_TOKEN', 'CREATE_USERLANGUAGES', 'GET_PHOTO',
+            'GET_LANGUAGES', 'GET_USER', 'GET_TOKEN', 'CREATE_USERLANGUAGES', 'GET_PHOTO', 'GET_ADMINID'
         ]),
         show() {
             let user_language = {};
@@ -44,7 +44,8 @@ export default {
         this.GET_TOKEN();
         this.GET_PHOTO();
         this.GET_USER();
-        this.GET_LANGUAGES();            
+        this.GET_LANGUAGES(); 
+        this.GET_ADMINID();           
     },
     computed: {
         ...mapState([

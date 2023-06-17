@@ -1,4 +1,5 @@
-<template>    
+<template> 
+    <Header></Header>   
     <component :is="layout">
         <router-view/>
     </component>        
@@ -8,6 +9,7 @@
 import Admin from './pages/interface/Admin.vue';
 import User from './pages/interface/User.vue';
 import Cabinet from './pages/interface/Cabinet.vue';
+import Header from './pages/layouts/Header.vue';
 export default {
     name: "App",
     computed: {
@@ -16,7 +18,7 @@ export default {
         }
     },
     components: {
-        Admin, User, Cabinet
+        Admin, User, Cabinet, Header
     }
 }
 </script>

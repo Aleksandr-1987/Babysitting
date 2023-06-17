@@ -1,15 +1,10 @@
-<template>    
-    <Header></Header>
+<template>
     <router-view/>
 </template>
 
 <script>
-import Header from '../layouts/Header.vue'
 export default {
-    name: "User",
-    components: {
-        Header
-    },        
+    name: "User",            
 }
 </script>
 
