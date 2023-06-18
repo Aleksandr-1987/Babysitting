@@ -90,7 +90,31 @@ export const routes = [
         path: '/change-user',
         meta: {layout: 'Admin'},
         component: () =>import('../pages/admin/Change-user.vue')
-    },*/    
+    },*/
+    {
+        name: 'Add-message',
+        path: '/add-message',
+        meta: {layout: 'Admin'},
+        component: () =>import('../pages/admin/message/Add-message.vue')
+    },
+    {
+        name: 'Msg-sent',
+        path: '/msg-sent',
+        meta: {layout: 'Admin'},
+        component: () =>import('../pages/admin/message/Msg-sent.vue')
+    },
+    {
+        name: 'Msg-received',
+        path: '/msg-received',
+        meta: {layout: 'Admin'},
+        component: () =>import('../pages/admin/message/Msg-received.vue')
+    },
+    {
+        name: 'Messages',
+        path: '/message',
+        meta: {layout: 'Admin'},
+        component: () =>import('../pages/admin/message/Messages.vue')
+    },    
     {
         name: 'Users',
         path: '/users',

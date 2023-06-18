@@ -60,6 +60,8 @@ function ($router) {
     Route::post('me', [AuthController::class, 'me']);
 
     Route::group(['middleware' => 'jwt.auth'], function(){
+        Route::get('/msg_in', [HelpController::class, 'getAdminMessage_in']);
+        Route::get('/msg_out', [HelpController::class, 'getAdminMessage_out']);
         Route::get('/admin', [HelpController::class, 'getAdmin']);
         Route::get('/message_in', [HelpController::class, 'getMessage_in']);
         Route::resource('/message', MessageController::class);

@@ -11,7 +11,9 @@
         <li v-for="user in selectedUsers">{{user}} {{user.title}}</li>
     </ul>
     <div v-if="!photo">Добавьте изображение</div>
-    <img v-else :src="photo" alt="">    
+    <img v-else :src="photo" alt=""> 
+    
+    
 </template>
 <script>
 import {mapActions, mapState} from 'vuex';

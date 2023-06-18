@@ -23,4 +23,16 @@ class HelpController extends Controller
         ])->get();            
         return $messages;
     }
+
+    public function getAdminMessage_in (Request $request)
+    {
+        $messages = Message::where('recipient', $request["data"])->get();              
+        return $messages;
+    }
+
+    public function getAdminMessage_out (Request $request)
+    {
+        $messages = Message::where('sender', $request["data"])->get();  
+        return $messages;        
+    }
 }

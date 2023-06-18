@@ -4,8 +4,11 @@ import router from "../components/router";
 
 let store = new Vuex.Store({
     state: {
+        countmessage: 0,
         admin_id: 0,
+        user_id: 0,
         user: {},
+        users: {},
         token: '',
         photo: '',
         languages: {},
@@ -73,14 +76,36 @@ let store = new Vuex.Store({
     },
     
     mutations: {
+        SET_COUNTMESSAGE: (state, res) => {            
+            state.countmessage = 0            
+            for (let index = 0; index < res.length; index++) {
+                if(res[index].reading==0){
+                    state.countmessage++                                       
+                }
+            }                
+        },
+        SET_USERS: (state, res) => {
+            state.users = res;            
+        },
         SET_MESSAGES: (state, res) => {
             state.messages = res;            
         },
         SET_MESSAGES_IN: (state, res) => {
-            state.messages_in = res;            
+            state.messages_in = res;
+            for (let index = 0; index < res.length; index++) {
+                if(res[index].reading==0){
+                    api.post('/api/auth/message/' + res[index].id, { _method: 'PUT', reading: 1 })                    
+                    .catch(error => {
+                        console.log(error);
+                    })
+                }
+            }                                    
         },
         SET_ADMINID: (state, res) => {
             state.admin_id = res;
+        },
+        SET_USERID: (state, res) => {
+            state.user_id = res;
         },
         SET_TOKEN: (state, token) => {
             state.token = token;
@@ -297,6 +322,54 @@ let store = new Vuex.Store({
                     return error;
                 })
         },
+        GET_MSG_OUT({commit}, data){
+            return api.get('api/auth/msg_out', {params: {data}})
+                .then(res => {
+                    //console.log(res);                    
+                    commit('SET_MESSAGES', res.data);                    
+                    return res;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        GET_MSG_IN({commit}, data){
+            return api.get('api/auth/msg_in', {params: {data}})
+                .then(res => {
+                    //console.log(res);                    
+                    commit('SET_MESSAGES_IN', res.data);                    
+                    return res;
+                })                
+                .catch((error) => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        GET_COUNTMESSAGE({commit}, data){
+            return api.get('api/auth/msg_in', {params: {data}})
+                .then(res => {
+                    //console.log(res);                    
+                    commit('SET_COUNTMESSAGE', res.data);                    
+                    return res;
+                })                
+                .catch((error) => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        GET_COUNTMESSAGE_USER({commit}, data){
+            return api.get('api/auth/message_in', {params: {data}})
+                .then(res => {
+                    //console.log(res);                    
+                    commit('SET_COUNTMESSAGE', res.data);                    
+                    return res;
+                })                
+                .catch((error) => {
+                    console.log(error);
+                    return error;
+                })
+        },
         GET_MESSAGES_IN({commit}, data){
             return api.get('api/auth/message_in', {params: {data}})
                 .then(res => {
@@ -312,7 +385,7 @@ let store = new Vuex.Store({
         CREATE_MESSAGE({dispatch}, data){            
             return api.post('api/auth/message', data)
                 .then((res) => {                    
-                    dispatch('GET_MESSAGES');
+                    //dispatch('GET_MESSAGES');
                     return res;
                 })
                 .catch(error => {
@@ -323,6 +396,9 @@ let store = new Vuex.Store({
 
         GET_ADMIN({commit}){                                     
             commit('SET_ADMINID', localStorage.admin_id);
+        },
+        GET_USERID({commit}){                                     
+            commit('SET_USERID', localStorage.user_id);
         },
 
         GET_ADMINID({dispatch}){            
@@ -1836,6 +1912,19 @@ let store = new Vuex.Store({
                 })
                 .catch(error => {
                     //console.log(error.response.data.error);
+                    console.log(error);
+                    return error;
+                })
+        },
+        GET_USERS({commit}){                                   
+            //console.log(data.name);
+            return axios.get('api/user/')
+                .then((res) => { 
+                    //console.log(res);                    
+                    commit('SET_USERS', res.data);                                     
+                    return res;
+                })
+                .catch(error => {
                     console.log(error);
                     return error;
                 })

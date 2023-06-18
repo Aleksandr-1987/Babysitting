@@ -71,7 +71,13 @@ class MessageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $message = Message::find($id);
+        //$desk->update($request->all());
+        $message->reading = $request->input('reading');
+
+        $message->save();
+
+        return response()->json($message);
     }
 
     /**

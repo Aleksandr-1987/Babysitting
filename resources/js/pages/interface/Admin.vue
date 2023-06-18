@@ -2,6 +2,7 @@
     <div class="admin">
         <div class="admin_sidebar">            
             <div @click.prevent="home" class="admin_sidebar_title">Home</div>
+            <div @click.prevent="message" class="admin_sidebar_item">Почтовый ящик</div>
             <div @click.prevent="users" class="admin_sidebar_item">Пользователи</div>       
             <div @click.prevent="languages" class="admin_sidebar_item">Родной язык</div>
             <div @click.prevent="alcohol" class="admin_sidebar_item">Отношение к алкоголю</div> 
@@ -46,6 +47,9 @@
         methods: { 
             home() {
                 this.$router.push({name: "Home"})
+            },
+            message() {
+                this.$router.push({name: "Messages"})
             },         
             users() {
                 this.$router.push({name: "Users"})
@@ -143,7 +147,7 @@
 
 <style>
 .admin {
-    height: 100%;    
+    height: calc(100% - 18px);    
     display: flex;                
 }
 .admin_sidebar {    
