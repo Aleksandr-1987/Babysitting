@@ -46,6 +46,7 @@ use App\Http\Controllers\FormDutieController;
 use App\Http\Controllers\FormEducationController;
 use App\Http\Controllers\FormJoboptionController;
 use App\Http\Controllers\FormTypeworkController;
+use App\Http\Controllers\BabyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,7 @@ function ($router) {
         Route::resource('/formeducation', FormEducationController::class);
         Route::resource('/formjoboption', FormJoboptionController::class);
         Route::resource('/formtypework', FormTypeworkController::class);
+        Route::resource('/baby', BabyController::class);        
     });    
 });
 

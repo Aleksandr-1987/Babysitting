@@ -402,6 +402,102 @@ let store = new Vuex.Store({
                 })
         },
 
+        CREATE_BABY({dispatch}, data){
+            //console.log(data[1]);            
+            return api.post('api/auth/baby', data[0])
+                .then((res) => {                    
+                    //dispatch('GET_BABYS');
+                    console.log(res.data);
+
+                    let user_language = {};
+                    let result = [];
+                    data[1].forEach((element) => {                               
+                        user_language.user_id = res.data.id;
+                        user_language.language_id = element;
+                        result.push(user_language);
+                        user_language = {};                                                               
+                    })                  
+                    dispatch('CREATE_USERLANGUAGES', [result, result.length]);
+
+                    let education = {};
+                    let result_education = [];
+                    data[2].forEach((element) => {                               
+                        education.form_id = res.data.id;
+                        education.education_id = element;
+                        result_education.push(education);
+                        education = {};                                                               
+                    })                  
+                    dispatch('CREATE_FORMEDUCATION', [result_education, result_education.length]);
+
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+
+        CREATE_USERLANGUAGES( {dispatch}, data){            
+            return api.post('api/auth/userlanguages', data)
+                .then((res) => {                    
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMAGEGROUP( {dispatch}, data){            
+            return api.post('api/auth/formagegroup', data)
+                .then((res) => {
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMDUTIE( {dispatch}, data){            
+            return api.post('api/auth/formdutie', data)
+                .then((res) => {
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMEDUCATION( {dispatch}, data){            
+            return api.post('api/auth/formeducation', data)
+                .then((res) => {
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMJOBOPTION( {dispatch}, data){            
+            return api.post('api/auth/formjoboption', data)
+                .then((res) => {
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMTYPEWORK( {dispatch}, data){            
+            return api.post('api/auth/formtypework', data)
+                .then((res) => {
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+
         GET_ADMIN({commit}){                                     
             commit('SET_ADMINID', localStorage.admin_id);
         },
@@ -469,7 +565,7 @@ let store = new Vuex.Store({
                     console.log(error);
                     return error;
                 })
-        },
+        },        
 
         DELETE_WORKPERIOD({dispatch}, data){                       
             return api.post('api/auth/workperiod/' + data, {_method: 'DELETE'})
@@ -1836,80 +1932,7 @@ let store = new Vuex.Store({
                     console.log(error);
                     return error;
                 })
-        },
-
-        CREATE_USERLANGUAGES( {dispatch}, data){            
-            return api.post('api/auth/userlanguages', data)
-                .then((res) => { 
-                    //console.log(res);                   
-                    //dispatch('GET_LANGUAGES');
-                    return res;
-                })
-                .catch(error => {
-                    console.log(error);
-                    return error;
-                })
-        },
-        CREATE_FORMAGEGROUP( {dispatch}, data){            
-            return api.post('api/auth/formagegroup', data)
-                .then((res) => { 
-                    //console.log(res);                   
-                    //dispatch('GET_LANGUAGES');
-                    return res;
-                })
-                .catch(error => {
-                    console.log(error);
-                    return error;
-                })
-        },
-        CREATE_FORMDUTIE( {dispatch}, data){            
-            return api.post('api/auth/formdutie', data)
-                .then((res) => { 
-                    //console.log(res);                   
-                    //dispatch('GET_LANGUAGES');
-                    return res;
-                })
-                .catch(error => {
-                    console.log(error);
-                    return error;
-                })
-        },
-        CREATE_FORMEDUCATION( {dispatch}, data){            
-            return api.post('api/auth/formeducation', data)
-                .then((res) => { 
-                    //console.log(res);                   
-                    //dispatch('GET_LANGUAGES');
-                    return res;
-                })
-                .catch(error => {
-                    console.log(error);
-                    return error;
-                })
-        },
-        CREATE_FORMJOBOPTION( {dispatch}, data){            
-            return api.post('api/auth/formjoboption', data)
-                .then((res) => { 
-                    //console.log(res);                   
-                    //dispatch('GET_LANGUAGES');
-                    return res;
-                })
-                .catch(error => {
-                    console.log(error);
-                    return error;
-                })
-        },
-        CREATE_FORMTYPEWORK( {dispatch}, data){            
-            return api.post('api/auth/formtypework', data)
-                .then((res) => { 
-                    //console.log(res);                   
-                    //dispatch('GET_LANGUAGES');
-                    return res;
-                })
-                .catch(error => {
-                    console.log(error);
-                    return error;
-                })
-        },
+        },        
 
         DELETE_CREDENTIAL({dispatch}, data){                       
             return api.post('api/auth/credential/' + data, {_method: 'DELETE'})
