@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UserLanguages;
+use App\Models\Children;
 
-class UserLanguagesController extends Controller
+class ChildrenController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return Children::orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -27,15 +27,13 @@ class UserLanguagesController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {    
-        for($i = 0; $i < $request[1]; ++$i) {
-            $userLanguages = new UserLanguages([
-                'user_id' => $request[0][$i]["user_id"],
-                'language_id' => $request[0][$i]["language_id"]
-            ]);                    
-            $userLanguages->save();
-        }        
-        return $request[1];        
+    {
+        $children = new Children([
+            'title' => $request->title
+        ]);
+                
+        $children->save();        
+        return response()->json('The children successfully added');
     }
 
     /**
@@ -59,7 +57,11 @@ class UserLanguagesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $children = Children::find($id);
+        $children->title = $request['title'];       
+
+        $children->save();
+        return response()->json(["The children successfully updated"]);
     }
 
     /**
@@ -67,6 +69,9 @@ class UserLanguagesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $children = Children::find($id);
+        $children->delete();        
+
+        return response()->json('The children successfully deleted');
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UserLanguages;
+use App\Models\FormAgegroup;
 
-class UserLanguagesController extends Controller
+class FormAgegroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,15 +27,15 @@ class UserLanguagesController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {    
+    {
         for($i = 0; $i < $request[1]; ++$i) {
-            $userLanguages = new UserLanguages([
-                'user_id' => $request[0][$i]["user_id"],
-                'language_id' => $request[0][$i]["language_id"]
+            $formAgegroup = new FormAgegroup([
+                'form_id' => $request[0][$i]["form_id"],
+                'agegroup_id' => $request[0][$i]["agegroup_id"]
             ]);                    
-            $userLanguages->save();
+            $formAgegroup->save();
         }        
-        return $request[1];        
+        return $request[1]; 
     }
 
     /**

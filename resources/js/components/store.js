@@ -15,6 +15,8 @@ let store = new Vuex.Store({
         language: {},
         agegroups: {},
         agegroup: {},
+        childrens: {},
+        children: {},
         alcohols: {},
         alcohol: {},
         babysittingduties: {},
@@ -127,6 +129,12 @@ let store = new Vuex.Store({
         },
         SET_AGEGROUP: (state, res) => {
             state.agegroup = res;            
+        },
+        SET_CHILDRENS: (state, res) => {
+            state.childrens = res;            
+        },
+        SET_CHILDREN: (state, res) => {
+            state.children = res;            
         },
         SET_ALCOHOLS: (state, res) => {
             state.alcohols = res;            
@@ -408,6 +416,53 @@ let store = new Vuex.Store({
                     localStorage.admin_id = res.data.id
                     dispatch('GET_ADMIN');                   
                     //commit('SET_ADMINID', res.data.id);
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+
+        DELETE_CHILDREN({dispatch}, data){                       
+            return api.post('api/auth/children/' + data, {_method: 'DELETE'})
+                .then((res) => {
+                    dispatch('GET_CHILDRENS');                  
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CHANGE_CHILDREN( data){                       
+            return api.put('api/auth/children/' + data.state.children.id, data.state.children)
+                .then((res) => {                  
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        GET_CHILDREN({commit}, data){
+            commit('SET_CHILDREN', data);
+        },
+        GET_CHILDRENS({commit}){
+            return api.get('api/auth/children')
+                .then(res => {                    
+                    commit('SET_CHILDRENS', res.data);                    
+                    return res;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return error;
+                })
+        }, 
+        CREATE_CHILDREN({dispatch}, data){            
+            return api.post('api/auth/children', data)
+                .then((res) => {                    
+                    dispatch('GET_CHILDRENS');
                     return res;
                 })
                 .catch(error => {
@@ -1785,6 +1840,66 @@ let store = new Vuex.Store({
 
         CREATE_USERLANGUAGES( {dispatch}, data){            
             return api.post('api/auth/userlanguages', data)
+                .then((res) => { 
+                    //console.log(res);                   
+                    //dispatch('GET_LANGUAGES');
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMAGEGROUP( {dispatch}, data){            
+            return api.post('api/auth/formagegroup', data)
+                .then((res) => { 
+                    //console.log(res);                   
+                    //dispatch('GET_LANGUAGES');
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMDUTIE( {dispatch}, data){            
+            return api.post('api/auth/formdutie', data)
+                .then((res) => { 
+                    //console.log(res);                   
+                    //dispatch('GET_LANGUAGES');
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMEDUCATION( {dispatch}, data){            
+            return api.post('api/auth/formeducation', data)
+                .then((res) => { 
+                    //console.log(res);                   
+                    //dispatch('GET_LANGUAGES');
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMJOBOPTION( {dispatch}, data){            
+            return api.post('api/auth/formjoboption', data)
+                .then((res) => { 
+                    //console.log(res);                   
+                    //dispatch('GET_LANGUAGES');
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+        CREATE_FORMTYPEWORK( {dispatch}, data){            
+            return api.post('api/auth/formtypework', data)
                 .then((res) => { 
                     //console.log(res);                   
                     //dispatch('GET_LANGUAGES');

@@ -85,6 +85,24 @@ export const routes = [
         meta: {layout: 'Cabinet'},
         component: () =>import('../pages/cabinet/Incoming.vue')
     },
+    {
+        name: 'Babysitting',
+        path: '/babysitting',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/forms/Babysitting.vue')
+    },
+    {
+        name: 'Housekeeper',
+        path: '/housekeeper',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/forms/Housekeeper.vue')
+    },
+    {
+        name: 'Nurse',
+        path: '/nurse',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/forms/Nurse.vue')
+    },
     /*{
         name: 'Change-user',
         path: '/change-user',
@@ -132,6 +150,18 @@ export const routes = [
         path: '/change-language',
         meta: {layout: 'Admin'},
         component: () =>import('../pages/admin/Change-language.vue')
+    },
+    {
+        name: 'Children',
+        path: '/children',
+        meta: {layout: 'Admin'},
+        component: () =>import('../pages/admin/Children.vue')
+    },
+    {
+        name: 'Change-children',
+        path: '/change-children',
+        meta: {layout: 'Admin'},
+        component: () =>import('../pages/admin/Change-children.vue')
     },
     {
         name: 'Agegroup',

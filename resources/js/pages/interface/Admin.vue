@@ -3,7 +3,8 @@
         <div class="admin_sidebar">            
             <div @click.prevent="home" class="admin_sidebar_title">Home</div>
             <div @click.prevent="message" class="admin_sidebar_item">Почтовый ящик</div>
-            <div @click.prevent="users" class="admin_sidebar_item">Пользователи</div>       
+            <div @click.prevent="users" class="admin_sidebar_item">Пользователи</div> 
+            <div @click.prevent="children" class="admin_sidebar_item">Количество детей</div>      
             <div @click.prevent="languages" class="admin_sidebar_item">Родной язык</div>
             <div @click.prevent="alcohol" class="admin_sidebar_item">Отношение к алкоголю</div> 
             <div @click.prevent="agegroup" class="admin_sidebar_item">Возрастные групы</div> 
@@ -53,6 +54,9 @@
             },         
             users() {
                 this.$router.push({name: "Users"})
+            },
+            children() {
+                this.$router.push({name: "Children"})
             },
             languages() {
                 this.$router.push({name: "Languages"})

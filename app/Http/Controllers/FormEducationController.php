@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UserLanguages;
+use App\Models\FormEducation;
 
-class UserLanguagesController extends Controller
+class FormEducationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,15 +27,15 @@ class UserLanguagesController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {    
+    {
         for($i = 0; $i < $request[1]; ++$i) {
-            $userLanguages = new UserLanguages([
-                'user_id' => $request[0][$i]["user_id"],
-                'language_id' => $request[0][$i]["language_id"]
+            $formEducation = new FormEducation([
+                'form_id' => $request[0][$i]["form_id"],
+                'education_id' => $request[0][$i]["education_id"]
             ]);                    
-            $userLanguages->save();
+            $formEducation->save();
         }        
-        return $request[1];        
+        return $request[1];
     }
 
     /**

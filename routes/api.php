@@ -40,6 +40,12 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CredentialController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\HelpController;
+use App\Http\Controllers\ChildrenController;
+use App\Http\Controllers\FormAgegroupController;
+use App\Http\Controllers\FormDutieController;
+use App\Http\Controllers\FormEducationController;
+use App\Http\Controllers\FormJoboptionController;
+use App\Http\Controllers\FormTypeworkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +74,7 @@ function ($router) {
         Route::resource('/credential', CredentialController::class);
         Route::resource('/photo', ImageController::class);
         Route::resource('/language', LanguageController::class);
+        Route::resource('/children', ChildrenController::class);
         Route::resource('/agegroup', AgeGroupController::class);        
         Route::resource('/babysittingdutie', BabysittingDutieController::class);        
         Route::resource('/diagnose', DiagnoseController::class);
@@ -88,7 +95,13 @@ function ($router) {
         Route::resource('/typeofwork', TypeOfWorkController::class);
         Route::resource('/worklocation', WorkLocationController::class);
         Route::resource('/workperiod', WorkPeriodController::class);
+
         Route::resource('/userlanguages', UserLanguagesController::class);
+        Route::resource('/formagegroup', FormAgegroupController::class);
+        Route::resource('/formdutie', FormDutieController::class);
+        Route::resource('/formeducation', FormEducationController::class);
+        Route::resource('/formjoboption', FormJoboptionController::class);
+        Route::resource('/formtypework', FormTypeworkController::class);
     });    
 });
 
@@ -101,5 +114,3 @@ Route::resource('/smoking', SmokingController::class);
 Route::resource('/alcohol', AlcoholController::class);
 Route::resource('/status', StatusController::class);
 Route::resource('/religion', ReligionController::class);
-
-
