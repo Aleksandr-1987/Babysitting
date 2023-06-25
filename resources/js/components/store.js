@@ -405,10 +405,8 @@ let store = new Vuex.Store({
         CREATE_BABY({dispatch}, data){
             //console.log(data[1]);            
             return api.post('api/auth/baby', data[0])
-                .then((res) => {                    
-                    //dispatch('GET_BABYS');
-                    console.log(res.data);
-
+                .then((res) => {                
+                    //console.log(res.data);
                     let user_language = {};
                     let result = [];
                     data[1].forEach((element) => {                               
@@ -429,6 +427,61 @@ let store = new Vuex.Store({
                     })                  
                     dispatch('CREATE_FORMEDUCATION', [result_education, result_education.length]);
 
+                    let typework = {};
+                    let result_typework = [];
+                    data[3].forEach((element) => {                               
+                        typework.form_id = res.data.id;
+                        typework.typework_id = element;
+                        result_typework.push(typework);
+                        typework = {};                                                               
+                    })                  
+                    dispatch('CREATE_FORMTYPEWORK', [result_typework, result_typework.length]);
+
+                    let joboption = {};
+                    let result_joboption = [];
+                    data[4].forEach((element) => {                               
+                        joboption.form_id = res.data.id;
+                        joboption.joboption_id = element;
+                        result_joboption.push(joboption);
+                        joboption = {};                                                               
+                    })                  
+                    dispatch('CREATE_FORMJOBOPTION', [result_joboption, result_joboption.length]);
+
+                    let dutie = {};
+                    let result_dutie = [];
+                    data[5].forEach((element) => {                               
+                        dutie.form_id = res.data.id;
+                        dutie.dutie_id = element;
+                        result_dutie.push(dutie);
+                        dutie = {};                                                               
+                    })                  
+                    dispatch('CREATE_FORMDUTIE', [result_dutie, result_dutie.length]);
+
+                    let agegroup = {};
+                    let result_agegroup = [];
+                    data[6].forEach((element) => {                               
+                        agegroup.form_id = res.data.id;
+                        agegroup.agegroup_id = element;
+                        result_agegroup.push(agegroup);
+                        agegroup = {};                                                               
+                    })                  
+                    dispatch('CREATE_FORMAGEGROUP', [result_agegroup, result_agegroup.length]);
+
+                    dispatch('GET_BABYS');
+                    return res;
+                })
+                .catch(error => {
+                    console.log(error);
+                    return error;
+                })
+        },
+
+        GET_BABYS({commit}){                                   
+            //console.log(data.name);
+            return api.get('api/auth/baby/')
+                .then((res) => { 
+                    //console.log(res);                    
+                    commit('SET_BABY', res.data);                                     
                     return res;
                 })
                 .catch(error => {

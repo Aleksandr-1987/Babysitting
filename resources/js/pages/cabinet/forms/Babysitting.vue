@@ -4,6 +4,11 @@
     <form @submit.prevent="createForm" class="login_form">   
         <div>Опишите Ваш опыт работы с детьми:</div>
         <textarea v-model="anketa.baby_exp" required class="login_form_item" placeholder="about"></textarea>
+        <div>Опыт работы с детьми по возрастным группам:</div>
+        <div v-for="post in agegroups" :key="post.id" class="language_item">
+            <input type="checkbox" v-bind:value="post.id" v-model="anketaagegroups">
+            {{ post.title }}                                    
+        </div>
         <div>Знание иностранных языков:</div>
         <div v-for="post in languages" :key="post.id" class="language_item">
             <input type="checkbox" v-bind:value="post.id" v-model="anketalanguages">
@@ -99,6 +104,7 @@ export default {
             anketatypeworks:[],
             anketajoboptions: [],
             anketaduties: [],
+            anketaagegroups: [],
             work: [
                 { value: 'Да' },
                 { value: 'Нет' }
@@ -109,7 +115,7 @@ export default {
         ...mapActions([
             'GET_LANGUAGES', 'GET_USER', 'GET_TOKEN', 'CREATE_USERLANGUAGES', 'GET_EXPERIENCES', 'GET_RECOMMENDATIONS', 'GET_EDUCATIONS',
             'GET_TYPEOFWORKS', 'GET_JOBOPTIONS', 'GET_WORKPERIODS', 'GET_EMPLOYMENTS', 'GET_CHILDRENS', 'GET_BABYSITTINGDUTIES',
-            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'CREATE_BABY' 
+            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'GET_AGEGROUPS', 'CREATE_BABY' 
         ]),
         back() {
             this.$router.push({name: "Account"})
@@ -130,24 +136,25 @@ export default {
             console.log(this.anketaeducations);
             console.log(this.anketatypeworks);
             console.log(this.anketajoboptions);
-            console.log(this.anketaduties);            
+            console.log(this.anketaduties); 
+            console.log(this.anketaagegroups);           
         },
         createForm() {
             this.anketa.user_id = this.user.id;
             this.anketa.confirmed = true;
-            this.CREATE_BABY([this.anketa, this.anketalanguages, this.anketaeducations, this.anketatypeworks, this.anketajoboptions, this.anketaduties]);
+            this.CREATE_BABY([this.anketa, this.anketalanguages, this.anketaeducations, this.anketatypeworks, this.anketajoboptions, this.anketaduties, this.anketaagegroups]);
         }
     },
     mounted() {
         this.GET_TOKEN(); this.GET_USER();
         this.GET_LANGUAGES(); this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_EDUCATIONS(); this.GET_TYPEOFWORKS();
         this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS(); this.GET_CHILDRENS(); this.GET_BABYSITTINGDUTIES();
-        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS();               
+        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();               
     },
     computed: {
         ...mapState([
             'languages', 'user', 'experiences', 'recommendations', 'educations', 'typeofworks', 'joboptions', 'workperiods',
-            'employments', 'childrens', 'babysittingduties', 'hourlypayments', 'monthlypayments' 
+            'employments', 'childrens', 'babysittingduties', 'hourlypayments', 'monthlypayments', 'agegroups' 
         ])
     },
 }
