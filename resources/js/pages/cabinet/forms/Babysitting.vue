@@ -87,10 +87,10 @@
         <div>Дополнительная информация:</div>
         <textarea v-model="anketa.additional" required class="login_form_item" placeholder="about"></textarea>          
                 
-        <button type="submit" class="login_form_btn">Отправить сообщение</button>
+        <button type="submit" class="login_form_btn">Добавить анкету</button>
     </form>    
     
-    <div @click.prevent="show">button</div>
+    <div>{{ baby }}</div>
 </template>
 <script>
 import {mapActions, mapState} from 'vuex';
@@ -115,30 +115,11 @@ export default {
         ...mapActions([
             'GET_LANGUAGES', 'GET_USER', 'GET_TOKEN', 'CREATE_USERLANGUAGES', 'GET_EXPERIENCES', 'GET_RECOMMENDATIONS', 'GET_EDUCATIONS',
             'GET_TYPEOFWORKS', 'GET_JOBOPTIONS', 'GET_WORKPERIODS', 'GET_EMPLOYMENTS', 'GET_CHILDRENS', 'GET_BABYSITTINGDUTIES',
-            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'GET_AGEGROUPS', 'CREATE_BABY' 
+            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'GET_AGEGROUPS', 'CREATE_BABY', 'GET_BABY' 
         ]),
         back() {
             this.$router.push({name: "Account"})
-        },
-        show() {
-            /*let user_language = {};
-            let result = [];
-            this.anketalanguages.forEach((element) => {                               
-                user_language.user_id = this.user.id;
-                user_language.language_id = element;
-                result.push(user_language);
-                user_language = {};                                                               
-            })     
-            this.CREATE_USERLANGUAGES([result, result.length]);*/
-            
-            console.log(this.anketa);            
-            console.log(this.anketalanguages);
-            console.log(this.anketaeducations);
-            console.log(this.anketatypeworks);
-            console.log(this.anketajoboptions);
-            console.log(this.anketaduties); 
-            console.log(this.anketaagegroups);           
-        },
+        },        
         createForm() {
             this.anketa.user_id = this.user.id;
             this.anketa.confirmed = true;
@@ -149,12 +130,13 @@ export default {
         this.GET_TOKEN(); this.GET_USER();
         this.GET_LANGUAGES(); this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_EDUCATIONS(); this.GET_TYPEOFWORKS();
         this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS(); this.GET_CHILDRENS(); this.GET_BABYSITTINGDUTIES();
-        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();               
+        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS(); 
+        this.GET_BABY(this.user.id);               
     },
     computed: {
         ...mapState([
             'languages', 'user', 'experiences', 'recommendations', 'educations', 'typeofworks', 'joboptions', 'workperiods',
-            'employments', 'childrens', 'babysittingduties', 'hourlypayments', 'monthlypayments', 'agegroups' 
+            'employments', 'childrens', 'babysittingduties', 'hourlypayments', 'monthlypayments', 'agegroups', 'baby' 
         ])
     },
 }

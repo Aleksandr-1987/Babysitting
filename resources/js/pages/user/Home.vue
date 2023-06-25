@@ -12,8 +12,8 @@ export default {
         ]),
     },
     mounted() {
-        this.GET_TOKEN();                    
-    },
+        this.GET_TOKEN();        
+    },    
 }
 </script>
 

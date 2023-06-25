@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Message;
+use App\Models\message\Message;
 
 class HelpController extends Controller
 {
