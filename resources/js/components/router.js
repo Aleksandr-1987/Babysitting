@@ -92,6 +92,12 @@ export const routes = [
         component: () =>import('../pages/cabinet/forms/Babysitting.vue')
     },
     {
+        name: 'Change-babysitting',
+        path: '/change-babysitting',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/forms/Change-babysitting.vue')
+    },
+    {
         name: 'Housekeeper',
         path: '/housekeeper',
         meta: {layout: 'Cabinet'},

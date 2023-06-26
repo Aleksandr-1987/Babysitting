@@ -27,7 +27,7 @@ let actions = {
                 let user_language = {};
                 let result = [];
                 data[1].forEach((element) => {                               
-                    user_language.user_id = res.data.id;
+                    user_language.user_id = data[0].user_id;
                     user_language.language_id = element;
                     result.push(user_language);
                     user_language = {};                                                               
@@ -97,7 +97,7 @@ let actions = {
         return api.get('api/auth/baby', {params: {data}})
             .then((res) => { 
                 //console.log(res);                    
-                commit('SET_BABY', res.data);                                     
+                commit('SET_BABY', res.data.data);                                     
                 return res;
             })
             .catch(error => {

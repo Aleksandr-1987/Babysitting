@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\forms\Baby;
+use App\Http\Resources\BabyResource;
 
 class BabyController extends Controller
 {
@@ -13,8 +14,9 @@ class BabyController extends Controller
      */
     public function index(Request $request)
     {
-        return Baby::where('user_id', $request["data"])->first();
-        //return $request["data"];
+        $baby = Baby::where('user_id', $request["data"])->first();
+        return new BabyResource($baby);
+        //return $baby;
     }
 
     /**

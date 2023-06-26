@@ -16,9 +16,7 @@ class UserResource extends JsonResource
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
-    {        
-        $lang = UserLanguages::where('user_id', $this->id)->get();
-        //$photo = Image::where('user_id', $this->id)->value('preview_url');
+    {      
         $image = null;
         $photo = Image::select('preview_url')->where('user_id', $this->id)->first();
         if($photo){$image = $photo["preview_url"];}else {$image = '';}
@@ -53,8 +51,7 @@ class UserResource extends JsonResource
                 'alcohol' => $this->get_alcohol->title,
                 'status' => $this->get_status->title, 
                 'religion' => $this->get_religion->title,           
-                'image' => $image,
-                'languages' => UserLanguagesResource::collection($lang),
+                'image' => $image,                
 
                 'country_id' => $this->country,
                 'city_id' => $this->city,
