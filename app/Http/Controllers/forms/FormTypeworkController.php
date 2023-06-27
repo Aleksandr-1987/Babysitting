@@ -68,6 +68,7 @@ class FormTypeworkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        FormTypework::where('form_id', '=', $id)->delete();
+        return response()->json('Удаление прошло успешно.');
     }
 }

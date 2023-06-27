@@ -68,6 +68,7 @@ class UserLanguagesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        UserLanguages::where('user_id', '=', $id)->delete();
+        return response()->json('Удаление прошло успешно.');
     }
 }

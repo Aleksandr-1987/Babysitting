@@ -15,8 +15,7 @@ class BabyController extends Controller
     public function index(Request $request)
     {
         $baby = Baby::where('user_id', $request["data"])->first();
-        return new BabyResource($baby);
-        //return $baby;
+        return new BabyResource($baby);        
     }
 
     /**
@@ -47,9 +46,9 @@ class BabyController extends Controller
             'additional' => $request->additional,
             'confirmed' => $request->confirmed,
         ]);                
-        $baby->save();                
-        return $baby;
-        //return $request;
+        $baby->save();
+
+        return $baby;        
     }
 
     /**
@@ -72,8 +71,22 @@ class BabyController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+    {        
+        $baby = Baby::find($id);       
+        $baby->baby_exp = $request['baby_exp'];
+        $baby->experience_id = $request['experience_id'];
+        $baby->recommendation_id = $request['recommendation_id'];
+        $baby->education_about = $request['education_about'];
+        $baby->workperiod_id = $request['workperiod_id'];
+        $baby->employment_id = $request['employment_id'];
+        $baby->childrencount_id = $request['childrencount_id'];                                    
+        $baby->children_invalid = $request['children_invalid'];
+        $baby->hourpay_id = $request['hourpay_id'];
+        $baby->monthpay_id = $request['monthpay_id'];
+        $baby->additional = $request['additional'];
+        $baby->save(); 
+
+        return $baby;        
     }
 
     /**

@@ -116,41 +116,44 @@ export default {
             'GET_TOKEN', 'GET_USER', 'GET_BABY',
             'GET_LANGUAGES', 'GET_EXPERIENCES', 'GET_RECOMMENDATIONS', 'GET_EDUCATIONS',
             'GET_TYPEOFWORKS', 'GET_JOBOPTIONS', 'GET_WORKPERIODS', 'GET_EMPLOYMENTS', 'GET_CHILDRENS', 'GET_BABYSITTINGDUTIES',
-            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'GET_AGEGROUPS' 
+            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'GET_AGEGROUPS', 'CHANGE_BABY' 
         ]),
         back() {
             this.$router.push({name: "Babysitting"})
         },
-        changeForm() {
-            //this.anketalanguages.push(1);
-            //this.anketalanguages.push(33);
-            console.log(this.anketalanguages);
+        changeForm() {            
+            this.CHANGE_BABY([this.baby, this.anketalanguages, this.anketaeducations, this.anketatypeworks, this.anketajoboptions, this.anketaduties, this.anketaagegroups]);
+            this.$router.push({name: "Babysitting"})
+        },
+        setItems() {
+            for (let i = 0; i < this.baby.Agegroups.length; i++) {            
+                this.anketaagegroups.push(this.baby.Agegroups[i].id);
+            }            
+            for (let i = 0; i < this.baby.Languages.length; i++) {            
+                this.anketalanguages.push(this.baby.Languages[i].id);
+            }
+            for (let i = 0; i < this.baby.Educations.length; i++) {            
+                this.anketaeducations.push(this.baby.Educations[i].id);
+            }
+            for (let i = 0; i < this.baby.Typeworks.length; i++) {            
+                this.anketatypeworks.push(this.baby.Typeworks[i].id);
+            }
+            for (let i = 0; i < this.baby.Joboptions.length; i++) {            
+                this.anketajoboptions.push(this.baby.Joboptions[i].id);
+            }        
+            for (let i = 0; i < this.baby.Duties.length; i++) {            
+                this.anketaduties.push(this.baby.Duties[i].id);
+            }
         }
     },
     mounted() {
         this.GET_TOKEN(); this.GET_USER(); this.GET_BABY(this.user.id);
+        
         this.GET_LANGUAGES(); this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_EDUCATIONS(); this.GET_TYPEOFWORKS();
         this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS(); this.GET_CHILDRENS(); this.GET_BABYSITTINGDUTIES();
-        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();        
+        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();    
         
-        for (let i = 0; i < this.baby.Agegroups.length; i++) {            
-            this.anketaagegroups.push(this.baby.Agegroups[i].id);
-        }            
-        for (let i = 0; i < this.baby.Languages.length; i++) {            
-            this.anketalanguages.push(this.baby.Languages[i].id);
-        }
-        for (let i = 0; i < this.baby.Educations.length; i++) {            
-            this.anketaeducations.push(this.baby.Educations[i].id);
-        }
-        for (let i = 0; i < this.baby.Typeworks.length; i++) {            
-            this.anketatypeworks.push(this.baby.Typeworks[i].id);
-        }
-        for (let i = 0; i < this.baby.Joboptions.length; i++) {            
-            this.anketajoboptions.push(this.baby.Joboptions[i].id);
-        }        
-        for (let i = 0; i < this.baby.Duties.length; i++) {            
-            this.anketaduties.push(this.baby.Duties[i].id);
-        }
+        setTimeout(this.setItems, 500);             
     },
     computed: {
         ...mapState([

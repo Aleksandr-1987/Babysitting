@@ -68,6 +68,7 @@ class FormDutieController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        FormDutie::where('form_id', '=', $id)->delete();
+        return response()->json('Удаление прошло успешно.');
     }
 }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\forms;
 use Illuminate\Routing\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\forms\FormEducation;
+use App\Models\forms\FormDiagnose;
 
-class FormEducationController extends Controller
+class FormDiagnoseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,11 +30,11 @@ class FormEducationController extends Controller
     public function store(Request $request)
     {
         for($i = 0; $i < $request[1]; ++$i) {
-            $formEducation = new FormEducation([
+            $formDutie = new FormDiagnose([
                 'form_id' => $request[0][$i]["form_id"],
-                'education_id' => $request[0][$i]["education_id"]
+                'diagnose_id' => $request[0][$i]["diagnose_id"]
             ]);                    
-            $formEducation->save();
+            $formDutie->save();
         }        
         return $request[1];
     }
@@ -68,7 +68,7 @@ class FormEducationController extends Controller
      */
     public function destroy(string $id)
     {
-        FormEducation::where('form_id', '=', $id)->delete();
+        FormDiagnose::where('form_id', '=', $id)->delete();
         return response()->json('Удаление прошло успешно.');
     }
 }

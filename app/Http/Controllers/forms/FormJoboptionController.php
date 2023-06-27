@@ -68,6 +68,7 @@ class FormJoboptionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        FormJoboption::where('form_id', '=', $id)->delete();
+        return response()->json('Удаление прошло успешно.');
     }
 }

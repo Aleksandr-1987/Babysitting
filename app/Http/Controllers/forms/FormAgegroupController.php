@@ -68,6 +68,7 @@ class FormAgegroupController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        FormAgegroup::where('form_id', '=', $id)->delete();
+        return response()->json('Удаление прошло успешно.');
     }
 }
