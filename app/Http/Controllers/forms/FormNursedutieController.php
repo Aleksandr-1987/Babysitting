@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\forms;
+use Illuminate\Routing\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\forms\FormNursedutie;
 
-class FormNurseworklocationController extends Controller
+class FormNursedutieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,14 @@ class FormNurseworklocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        for($i = 0; $i < $request[1]; ++$i) {
+            $formDutie = new FormNursedutie([
+                'form_id' => $request[0][$i]["form_id"],
+                'nursedutie_id' => $request[0][$i]["nursedutie_id"]
+            ]);                    
+            $formDutie->save();
+        }        
+        return $request[1];
     }
 
     /**
@@ -59,6 +68,7 @@ class FormNurseworklocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        FormNursedutie::where('form_id', '=', $id)->delete();
+        return response()->json('Удаление прошло успешно.');
     }
 }

@@ -253,20 +253,14 @@ let actions = {
                 dispatch('GET_CHILDRENS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_CHILDREN( data){                       
         return api.put('api/auth/children/' + data.state.children.id, data.state.children)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_CHILDREN({commit}, data){
         commit('SET_CHILDREN', data);
@@ -277,10 +271,7 @@ let actions = {
                 commit('SET_CHILDRENS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_CHILDREN({dispatch}, data){            
         return api.post('api/auth/children', data)
@@ -288,10 +279,7 @@ let actions = {
                 dispatch('GET_CHILDRENS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_WORKPERIOD({dispatch}, data){                       
@@ -300,10 +288,7 @@ let actions = {
                 dispatch('GET_WORKPERIODS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_WORKPERIOD( data){                       
         return api.put('api/auth/workperiod/' + data.state.workperiod.id, data.state.workperiod)
@@ -324,10 +309,7 @@ let actions = {
                 commit('SET_WORKPERIODS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_WORKPERIOD({dispatch}, data){            
         return api.post('api/auth/workperiod', data)
@@ -335,10 +317,7 @@ let actions = {
                 dispatch('GET_WORKPERIODS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_WORKLOCATION({dispatch}, data){                       
@@ -347,20 +326,14 @@ let actions = {
                 dispatch('GET_WORKLOCATIONS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_WORKLOCATION( data){                       
         return api.put('api/auth/worklocation/' + data.state.worklocation.id, data.state.worklocation)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_WORKLOCATION({commit}, data){
         commit('SET_WORKLOCATION', data);
@@ -371,10 +344,7 @@ let actions = {
                 commit('SET_WORKLOCATIONS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_WORKLOCATION({dispatch}, data){            
         return api.post('api/auth/worklocation', data)
@@ -382,10 +352,7 @@ let actions = {
                 dispatch('GET_WORKLOCATIONS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_TYPEOFWORK({dispatch}, data){                       
@@ -394,20 +361,14 @@ let actions = {
                 dispatch('GET_TYPEOFWORKS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_TYPEOFWORK( data){                       
         return api.put('api/auth/typeofwork/' + data.state.typeofwork.id, data.state.typeofwork)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_TYPEOFWORK({commit}, data){
         commit('SET_TYPEOFWORK', data);
@@ -418,10 +379,7 @@ let actions = {
                 commit('SET_TYPEOFWORKS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_TYPEOFWORK({dispatch}, data){            
         return api.post('api/auth/typeofwork', data)
@@ -429,10 +387,7 @@ let actions = {
                 dispatch('GET_TYPEOFWORKS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_STATUS({dispatch}, data){                       
@@ -441,20 +396,14 @@ let actions = {
                 dispatch('GET_STATUSS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_STATUS( data){                       
         return axios.put('api/status/' + data.state.status.id, data.state.status)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_STATUS({commit}, data){
         commit('SET_STATUS', data);
@@ -465,10 +414,7 @@ let actions = {
                 commit('SET_STATUSS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_STATUS({dispatch}, data){            
         return axios.post('api/status', data)
@@ -476,10 +422,7 @@ let actions = {
                 dispatch('GET_STATUSS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_SMOKING({dispatch}, data){                       
@@ -489,48 +432,33 @@ let actions = {
                 dispatch('GET_SMOKINGS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
-    CHANGE_SMOKING( data){                       
-        //return api.put('api/auth/smoking/' + data.state.smoking.id, data.state.smoking)
+    CHANGE_SMOKING( data){       
         return axios.put('api/smoking/' + data.state.smoking.id, data.state.smoking)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_SMOKING({commit}, data){
         commit('SET_SMOKING', data);
     },
-    GET_SMOKINGS({commit}){
-        //return api.get('api/auth/smoking')
+    GET_SMOKINGS({commit}){        
         return axios.get('api/smoking')
             .then(res => {                    
                 commit('SET_SMOKINGS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
-    CREATE_SMOKING({dispatch}, data){            
-        //return api.post('api/auth/smoking', data)
+    CREATE_SMOKING({dispatch}, data){        
         return axios.post('api/smoking', data)
             .then((res) => {                    
                 dispatch('GET_SMOKINGS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_SCHEDULE({dispatch}, data){                       
@@ -539,20 +467,14 @@ let actions = {
                 dispatch('GET_SCHEDULES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_SCHEDULE( data){                       
         return api.put('api/auth/schedule/' + data.state.schedule.id, data.state.schedule)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_SCHEDULE({commit}, data){
         commit('SET_SCHEDULE', data);
@@ -563,10 +485,7 @@ let actions = {
                 commit('SET_SCHEDULES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_SCHEDULE({dispatch}, data){            
         return api.post('api/auth/schedule', data)
@@ -574,10 +493,7 @@ let actions = {
                 dispatch('GET_SCHEDULES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     
     DELETE_RELIGION({dispatch}, data){                       
@@ -586,20 +502,14 @@ let actions = {
                 dispatch('GET_RELIGIONS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_RELIGION( data){                       
         return axios.put('api/religion/' + data.state.religion.id, data.state.religion)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_RELIGION({commit}, data){
         commit('SET_RELIGION', data);
@@ -610,10 +520,7 @@ let actions = {
                 commit('SET_RELIGIONS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_RELIGION({dispatch}, data){            
         return axios.post('api/religion', data)
@@ -621,10 +528,7 @@ let actions = {
                 dispatch('GET_RELIGIONS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_RECOMMENDATION({dispatch}, data){                       
@@ -633,20 +537,14 @@ let actions = {
                 dispatch('GET_RECOMMENDATIONS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_RECOMMENDATION( data){                       
         return api.put('api/auth/recommendation/' + data.state.recommendation.id, data.state.recommendation)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_RECOMMENDATION({commit}, data){
         commit('SET_RECOMMENDATION', data);
@@ -657,10 +555,7 @@ let actions = {
                 commit('SET_RECOMMENDATIONS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_RECOMMENDATION({dispatch}, data){            
         return api.post('api/auth/recommendation', data)
@@ -668,10 +563,7 @@ let actions = {
                 dispatch('GET_RECOMMENDATIONS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_NURSINGSKILL({dispatch}, data){                       
@@ -680,20 +572,14 @@ let actions = {
                 dispatch('GET_NURSINGSKILLS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_NURSINGSKILL( data){                       
         return api.put('api/auth/nursingskill/' + data.state.nursingskill.id, data.state.nursingskill)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_NURSINGSKILL({commit}, data){
         commit('SET_NURSINGSKILL', data);
@@ -704,10 +590,7 @@ let actions = {
                 commit('SET_NURSINGSKILLS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_NURSINGSKILL({dispatch}, data){            
         return api.post('api/auth/nursingskill', data)
@@ -715,10 +598,7 @@ let actions = {
                 dispatch('GET_NURSINGSKILLS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_NURSETYPEOFWORK({dispatch}, data){                       
@@ -727,20 +607,14 @@ let actions = {
                 dispatch('GET_NURSETYPEOFWORKS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_NURSETYPEOFWORK( data){                       
         return api.put('api/auth/nursetypeofwork/' + data.state.nursetypeofwork.id, data.state.nursetypeofwork)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_NURSETYPEOFWORK({commit}, data){
         commit('SET_NURSETYPEOFWORK', data);
@@ -751,10 +625,7 @@ let actions = {
                 commit('SET_NURSETYPEOFWORKS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_NURSETYPEOFWORK({dispatch}, data){            
         return api.post('api/auth/nursetypeofwork', data)
@@ -762,10 +633,7 @@ let actions = {
                 dispatch('GET_NURSETYPEOFWORKS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_NURSEDUTIE({dispatch}, data){                       
@@ -774,20 +642,14 @@ let actions = {
                 dispatch('GET_NURSEDUTIES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_NURSEDUTIE( data){                       
         return api.put('api/auth/nursedutie/' + data.state.nursedutie.id, data.state.nursedutie)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_NURSEDUTIE({commit}, data){
         commit('SET_NURSEDUTIE', data);
@@ -798,10 +660,7 @@ let actions = {
                 commit('SET_NURSEDUTIES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_NURSEDUTIE({dispatch}, data){            
         return api.post('api/auth/nursedutie', data)
@@ -809,10 +668,7 @@ let actions = {
                 dispatch('GET_NURSEDUTIES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_MOVING({dispatch}, data){                       
@@ -821,20 +677,14 @@ let actions = {
                 dispatch('GET_MOVINGS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_MOVING( data){                       
         return axios.put('api/moving/' + data.state.moving.id, data.state.moving)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_MOVING({commit}, data){
         commit('SET_MOVING', data);
@@ -845,10 +695,7 @@ let actions = {
                 commit('SET_MOVINGS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_MOVING({dispatch}, data){            
         return axios.post('api/moving', data)
@@ -856,10 +703,7 @@ let actions = {
                 dispatch('GET_MOVINGS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_MONTHLYPAYMENT({dispatch}, data){                       
@@ -868,20 +712,14 @@ let actions = {
                 dispatch('GET_MONTHLYPAYMENTS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_MONTHLYPAYMENT( data){                       
         return api.put('api/auth/monthlypayment/' + data.state.monthlypayment.id, data.state.monthlypayment)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_MONTHLYPAYMENT({commit}, data){
         commit('SET_MONTHLYPAYMENT', data);
@@ -892,10 +730,7 @@ let actions = {
                 commit('SET_MONTHLYPAYMENTS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_MONTHLYPAYMENT({dispatch}, data){            
         return api.post('api/auth/monthlypayment', data)
@@ -903,10 +738,7 @@ let actions = {
                 dispatch('GET_MONTHLYPAYMENTS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_JOBOPTION({dispatch}, data){                       
@@ -915,20 +747,14 @@ let actions = {
                 dispatch('GET_JOBOPTIONS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_JOBOPTION( data){                       
         return api.put('api/auth/joboption/' + data.state.joboption.id, data.state.joboption)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_JOBOPTION({commit}, data){
         commit('SET_JOBOPTION', data);
@@ -939,10 +765,7 @@ let actions = {
                 commit('SET_JOBOPTIONS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_JOBOPTION({dispatch}, data){            
         return api.post('api/auth/joboption', data)
@@ -950,10 +773,7 @@ let actions = {
                 dispatch('GET_JOBOPTIONS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_HOUSEKEEPERTYPEOFWORK({dispatch}, data){                       
@@ -962,20 +782,14 @@ let actions = {
                 dispatch('GET_HOUSEKEEPERTYPEOFWORKS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_HOUSEKEEPERTYPEOFWORK( data){                       
         return api.put('api/auth/housekeepertypeofwork/' + data.state.housekeepertypeofwork.id, data.state.housekeepertypeofwork)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_HOUSEKEEPERTYPEOFWORK({commit}, data){
         commit('SET_HOUSEKEEPERTYPEOFWORK', data);
@@ -986,10 +800,7 @@ let actions = {
                 commit('SET_HOUSEKEEPERTYPEOFWORKS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_HOUSEKEEPERTYPEOFWORK({dispatch}, data){            
         return api.post('api/auth/housekeepertypeofwork', data)
@@ -997,10 +808,7 @@ let actions = {
                 dispatch('GET_HOUSEKEEPERTYPEOFWORKS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_HOUSEKEEPERPREFERENCE({dispatch}, data){                       
@@ -1009,20 +817,14 @@ let actions = {
                 dispatch('GET_HOUSEKEEPERPREFERENCES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_HOUSEKEEPERPREFERENCE( data){                       
         return api.put('api/auth/housekeeperpreference/' + data.state.housekeeperpreference.id, data.state.housekeeperpreference)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_HOUSEKEEPERPREFERENCE({commit}, data){
         commit('SET_HOUSEKEEPERPREFERENCE', data);
@@ -1033,10 +835,7 @@ let actions = {
                 commit('SET_HOUSEKEEPERPREFERENCES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_HOUSEKEEPERPREFERENCE({dispatch}, data){            
         return api.post('api/auth/housekeeperpreference', data)
@@ -1044,10 +843,7 @@ let actions = {
                 dispatch('GET_HOUSEKEEPERPREFERENCES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_HOUSEKEEPERDUTIE({dispatch}, data){                       
@@ -1056,20 +852,14 @@ let actions = {
                 dispatch('GET_HOUSEKEEPERDUTIES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_HOUSEKEEPERDUTIE( data){                       
         return api.put('api/auth/housekeeperdutie/' + data.state.housekeeperdutie.id, data.state.housekeeperdutie)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_HOUSEKEEPERDUTIE({commit}, data){
         commit('SET_HOUSEKEEPERDUTIE', data);
@@ -1080,10 +870,7 @@ let actions = {
                 commit('SET_HOUSEKEEPERDUTIES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_HOUSEKEEPERDUTIE({dispatch}, data){            
         return api.post('api/auth/housekeeperdutie', data)
@@ -1091,10 +878,7 @@ let actions = {
                 dispatch('GET_HOUSEKEEPERDUTIES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_HOURLYPAYMENT({dispatch}, data){                       
@@ -1103,20 +887,14 @@ let actions = {
                 dispatch('GET_HOURLYPAYMENTS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_HOURLYPAYMENT( data){                       
         return api.put('api/auth/hourlypayment/' + data.state.hourlypayment.id, data.state.hourlypayment)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_HOURLYPAYMENT({commit}, data){
         commit('SET_HOURLYPAYMENT', data);
@@ -1127,10 +905,7 @@ let actions = {
                 commit('SET_HOURLYPAYMENTS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_HOURLYPAYMENT({dispatch}, data){            
         return api.post('api/auth/hourlypayment', data)
@@ -1138,10 +913,7 @@ let actions = {
                 dispatch('GET_HOURLYPAYMENTS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_EXPERIENCE({dispatch}, data){                       
@@ -1150,20 +922,14 @@ let actions = {
                 dispatch('GET_EXPERIENCES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_EXPERIENCE( data){                       
         return api.put('api/auth/experience/' + data.state.experience.id, data.state.experience)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_EXPERIENCE({commit}, data){
         commit('SET_EXPERIENCE', data);
@@ -1174,10 +940,7 @@ let actions = {
                 commit('SET_EXPERIENCES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_EXPERIENCE({dispatch}, data){            
         return api.post('api/auth/experience', data)
@@ -1185,10 +948,7 @@ let actions = {
                 dispatch('GET_EXPERIENCES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_EMPLOYMENT({dispatch}, data){                       
@@ -1197,20 +957,14 @@ let actions = {
                 dispatch('GET_EMPLOYMENTS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_EMPLOYMENT( data){                       
         return api.put('api/auth/employment/' + data.state.employment.id, data.state.employment)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_EMPLOYMENT({commit}, data){
         commit('SET_EMPLOYMENT', data);
@@ -1221,10 +975,7 @@ let actions = {
                 commit('SET_EMPLOYMENTS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_EMPLOYMENT({dispatch}, data){            
         return api.post('api/auth/employment', data)
@@ -1232,10 +983,7 @@ let actions = {
                 dispatch('GET_EMPLOYMENTS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_EDUCATION({dispatch}, data){                       
@@ -1244,20 +992,14 @@ let actions = {
                 dispatch('GET_EDUCATIONS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_EDUCATION( data){                       
         return api.put('api/auth/education/' + data.state.education.id, data.state.education)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_EDUCATION({commit}, data){
         commit('SET_EDUCATION', data);
@@ -1268,10 +1010,7 @@ let actions = {
                 commit('SET_EDUCATIONS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_EDUCATION({dispatch}, data){            
         return api.post('api/auth/education', data)
@@ -1279,10 +1018,7 @@ let actions = {
                 dispatch('GET_EDUCATIONS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_DIAGNOSE({dispatch}, data){                       
@@ -1291,20 +1027,14 @@ let actions = {
                 dispatch('GET_DIAGNOSES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_DIAGNOSE( data){                       
         return api.put('api/auth/diagnose/' + data.state.diagnose.id, data.state.diagnose)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_DIAGNOSE({commit}, data){
         commit('SET_DIAGNOSE', data);
@@ -1315,10 +1045,7 @@ let actions = {
                 commit('SET_DIAGNOSES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_DIAGNOSE({dispatch}, data){            
         return api.post('api/auth/diagnose', data)
@@ -1326,10 +1053,7 @@ let actions = {
                 dispatch('GET_DIAGNOSES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_CRIMINAL({dispatch}, data){                       
@@ -1338,20 +1062,14 @@ let actions = {
                 dispatch('GET_CRIMINALS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_CRIMINAL( data){                       
         return axios.put('api/criminal/' + data.state.criminal.id, data.state.criminal)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_CRIMINAL({commit}, data){
         commit('SET_CRIMINAL', data);
@@ -1362,10 +1080,7 @@ let actions = {
                 commit('SET_CRIMINALS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_CRIMINAL( {dispatch}, data){            
         return axios.post('api/criminal', data)
@@ -1373,10 +1088,7 @@ let actions = {
                 dispatch('GET_CRIMINALS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_COUNTRY({dispatch}, data){                       
@@ -1385,20 +1097,14 @@ let actions = {
                 dispatch('GET_COUNTRYS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_COUNTRY( data){                       
         return axios.put('api/country/' + data.state.country.id, data.state.country)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_COUNTRY({commit}, data){
         commit('SET_COUNTRY', data);
@@ -1409,10 +1115,7 @@ let actions = {
                 commit('SET_COUNTRYS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_COUNTRY( {dispatch}, data){            
         return axios.post('api/country', data)
@@ -1420,10 +1123,7 @@ let actions = {
                 dispatch('GET_COUNTRYS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_CITY({dispatch}, data){                       
@@ -1432,20 +1132,14 @@ let actions = {
                 dispatch('GET_CITYS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_CITY( data){                       
         return axios.put('api/city/' + data.state.city.id, data.state.city)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_CITY({commit}, data){
         commit('SET_CITY', data);
@@ -1456,10 +1150,7 @@ let actions = {
                 commit('SET_CITYS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_CITY( {dispatch}, data){            
         return axios.post('api/city', data)
@@ -1467,10 +1158,7 @@ let actions = {
                 dispatch('GET_CITYS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_BABYSITTINGDUTIE({dispatch}, data){                       
@@ -1479,20 +1167,14 @@ let actions = {
                 dispatch('GET_BABYSITTINGDUTIES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_BABYSITTINGDUTIE( data){                       
         return api.put('api/auth/babysittingdutie/' + data.state.babysittingdutie.id, data.state.babysittingdutie)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_BABYSITTINGDUTIE({commit}, data){
         commit('SET_BABYSITTINGDUTIE', data);
@@ -1503,10 +1185,7 @@ let actions = {
                 commit('SET_BABYSITTINGDUTIES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_BABYSITTINGDUTIE( {dispatch}, data){            
         return api.post('api/auth/babysittingdutie', data)
@@ -1514,10 +1193,7 @@ let actions = {
                 dispatch('GET_BABYSITTINGDUTIES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_ALCOHOL({dispatch}, data){                       
@@ -1526,20 +1202,14 @@ let actions = {
                 dispatch('GET_ALCOHOLS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_ALCOHOL( data){                       
         return axios.put('api/alcohol/' + data.state.alcohol.id, data.state.alcohol)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_ALCOHOL({commit}, data){
         commit('SET_ALCOHOL', data);
@@ -1550,10 +1220,7 @@ let actions = {
                 commit('SET_ALCOHOLS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_ALCOHOL( {dispatch}, data){            
         return axios.post('api/alcohol', data)
@@ -1561,10 +1228,7 @@ let actions = {
                 dispatch('GET_ALCOHOLS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_AGEGROUP({dispatch}, data){                       
@@ -1573,20 +1237,14 @@ let actions = {
                 dispatch('GET_AGEGROUPS');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_AGEGROUP( data){                       
         return api.put('api/auth/agegroup/' + data.state.agegroup.id, data.state.agegroup)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_AGEGROUP({commit}, data){
         commit('SET_AGEGROUP', data);
@@ -1597,10 +1255,7 @@ let actions = {
                 commit('SET_AGEGROUPS', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_AGEGROUP( {dispatch}, data){            
         return api.post('api/auth/agegroup', data)
@@ -1608,10 +1263,7 @@ let actions = {
                 dispatch('GET_AGEGROUPS');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 
     DELETE_LANGUAGE({dispatch}, data){                       
@@ -1620,20 +1272,14 @@ let actions = {
                 dispatch('GET_LANGUAGES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CHANGE_LANGUAGE(data){                       
         return api.put('api/auth/language/' + data.state.language.id, data.state.language)
             .then((res) => {                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_LANGUAGE({commit}, data){
         commit('SET_LANGUAGE', data);
@@ -1644,10 +1290,7 @@ let actions = {
                 commit('SET_LANGUAGES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_LANGUAGE( {dispatch}, data){            
         return api.post('api/auth/language', data)
@@ -1655,10 +1298,7 @@ let actions = {
                 dispatch('GET_LANGUAGES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 };
 
@@ -1667,5 +1307,3 @@ export default {
     mutations,
     actions
 };
-
-

@@ -33,7 +33,8 @@ class BabyResource extends JsonResource
         $education = FormEducation::where('form_id', $this->id)->get(); 
         $typework = FormTypework::where('form_id', $this->id)->get(); 
         $joboption = FormJoboption::where('form_id', $this->id)->get(); 
-        $dutie = FormDutie::where('form_id', $this->id)->get();   
+        $dutie = FormDutie::where('form_id', $this->id)->get(); 
+          
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,

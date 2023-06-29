@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\forms;
+use Illuminate\Routing\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\forms\FormNursetypework;
 
 class FormNursetypeworkController extends Controller
 {
@@ -27,7 +29,14 @@ class FormNursetypeworkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        for($i = 0; $i < $request[1]; ++$i) {
+            $formDutie = new FormNursetypework([
+                'form_id' => $request[0][$i]["form_id"],
+                'nursetypework_id' => $request[0][$i]["nursetypework_id"]
+            ]);                    
+            $formDutie->save();
+        }        
+        return $request[1];
     }
 
     /**
@@ -59,6 +68,7 @@ class FormNursetypeworkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        FormNursetypework::where('form_id', '=', $id)->delete();
+        return response()->json('Удаление прошло успешно.');
     }
 }

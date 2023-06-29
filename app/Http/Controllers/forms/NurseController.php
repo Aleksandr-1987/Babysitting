@@ -4,19 +4,20 @@ namespace App\Http\Controllers\forms;
 use Illuminate\Routing\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\forms\Baby;
-use App\Http\Resources\BabyResource;
+use App\Models\forms\Nurse;
+use App\Http\Resources\NurseResource;
 
-class BabyController extends Controller
+class NurseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $baby = Baby::where('user_id', $request["data"])->first();
-        if($baby) { return new BabyResource($baby); }
-        else { return null; }        
+        $nurse = Nurse::where('user_id', $request["data"])->first();
+        if($nurse) { return new NurseResource($nurse); }
+        else { return null; }
+        //return $nurse;
     }
 
     /**
@@ -32,24 +33,22 @@ class BabyController extends Controller
      */
     public function store(Request $request)
     {
-        $baby = new Baby([
+        $nurse = new Nurse([
             'user_id' => $request->user_id,
-            'baby_exp' => $request->baby_exp,
+            'nurse_exp' => $request->nurse_exp,
             'experience_id' => $request->experience_id,
             'recommendation_id' => $request->recommendation_id,
             'education_about' => $request->education_about,
             'workperiod_id' => $request->workperiod_id,
-            'employment_id' => $request->employment_id,
-            'childrencount_id' => $request->childrencount_id,                                    
-            'children_invalid' => $request->children_invalid,
+            'employment_id' => $request->employment_id,            
             'hourpay_id' => $request->hourpay_id,
             'monthpay_id' => $request->monthpay_id,
             'additional' => $request->additional,
             'confirmed' => $request->confirmed,
         ]);                
-        $baby->save();
+        $nurse->save();
 
-        return $baby;        
+        return $nurse;
     }
 
     /**
@@ -72,22 +71,20 @@ class BabyController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {        
-        $baby = Baby::find($id);       
-        $baby->baby_exp = $request['baby_exp'];
-        $baby->experience_id = $request['experience_id'];
-        $baby->recommendation_id = $request['recommendation_id'];
-        $baby->education_about = $request['education_about'];
-        $baby->workperiod_id = $request['workperiod_id'];
-        $baby->employment_id = $request['employment_id'];
-        $baby->childrencount_id = $request['childrencount_id'];                                    
-        $baby->children_invalid = $request['children_invalid'];
-        $baby->hourpay_id = $request['hourpay_id'];
-        $baby->monthpay_id = $request['monthpay_id'];
-        $baby->additional = $request['additional'];
-        $baby->save(); 
+    {
+        $nurse = Nurse::find($id);       
+        $nurse->nurse_exp = $request['nurse_exp'];
+        $nurse->experience_id = $request['experience_id'];
+        $nurse->recommendation_id = $request['recommendation_id'];
+        $nurse->education_about = $request['education_about'];
+        $nurse->workperiod_id = $request['workperiod_id'];
+        $nurse->employment_id = $request['employment_id'];        
+        $nurse->hourpay_id = $request['hourpay_id'];
+        $nurse->monthpay_id = $request['monthpay_id'];
+        $nurse->additional = $request['additional'];
+        $nurse->save(); 
 
-        return $baby;        
+        return $nurse;
     }
 
     /**

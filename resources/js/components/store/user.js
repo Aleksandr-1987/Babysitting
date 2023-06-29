@@ -40,47 +40,32 @@ let actions = {
     },
     GET_ADMINID({dispatch}){            
         return api.get('api/auth/admin')
-            .then((res) => { 
-                //console.log(res);
+            .then((res) => {                 
                 localStorage.admin_id = res.data.id
-                dispatch('GET_ADMIN');                   
-                //commit('SET_ADMINID', res.data.id);
+                dispatch('GET_ADMIN');             
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_PHOTO({commit}){
         commit('SET_PHOTO', localStorage.user_image);
     },
     CREATE_PHOTO( {dispatch}, data){            
         return api.post('api/auth/photo', data)
-            .then((res) => { 
-                //console.log(res);                   
+            .then((res) => {                                   
                 localStorage.user_image = res.data.preview_url;
                 dispatch('GET_PHOTO');
                 router.push({name: "Account"});                    
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     DELETE_PHOTO( {commit}, data){            
         return api.post('api/auth/photo/' + data, {_method: 'DELETE'})
-            .then((res) => { 
-                console.log(res);
-                //localStorage.removeItem('user_image');
-                //commit('SET_PHOTO', '');
+            .then((res) => {                
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_TOKEN({commit}){
         commit('SET_TOKEN', localStorage.access_token);
@@ -99,18 +84,14 @@ let actions = {
                 router.push({name: "Login"});                    
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_USER({commit}){                                     
         commit('SET_USER', JSON.parse(localStorage.user));
     },
     LOGIN_USER({dispatch}, data){                                                 
         return axios.post('api/auth/login', data)
-            .then((res) => {
-                //console.log(res)
+            .then((res) => {                
                 localStorage.access_token = res.data[0].original.access_token
                 localStorage.user = JSON.stringify(res.data[1].original)
                 localStorage.user_image = res.data[1].original.image;
@@ -118,55 +99,36 @@ let actions = {
                 router.push({name: "Account"});
                 return res;
             })
-            .catch(error => {
-                //console.log(error.response.data.error);
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
-    GET_USERS({commit}){                                   
-        //console.log(data.name);
+    GET_USERS({commit}){       
         return axios.get('api/user/')
-            .then((res) => { 
-                //console.log(res);                    
+            .then((res) => {                              
                 commit('SET_USERS', res.data);                                     
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
-    UPDATE_USER({dispatch}, data){                                   
-        //console.log(data.name);
+    UPDATE_USER({dispatch}, data){  
         return axios.put('api/user/' + data.id, data)
-            .then((res) => { 
-                //console.log(res);
+            .then((res) => {        
                 localStorage.user = JSON.stringify(res.data.data)
                 dispatch('GET_USER');
                 router.push({name: "Account"});                 
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     CREATE_USER({dispatch}, data){                                     
         return axios.post('api/user', data)
-            .then((res) => {
-                //console.log(res.data.message);
+            .then((res) => {                
                 localStorage.access_token = res.data.access_token
                 localStorage.user = JSON.stringify(res.data.user)
                 dispatch('GET_USER');
                 router.push({name: "Account"});                                      
                 return res;
             })
-            .catch(error => {
-                //console.log(error.response.data.message);
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 };
 

@@ -38,82 +38,55 @@ let actions = {
                 dispatch('GET_MESSAGES');                  
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },        
     GET_MESSAGES({commit}, data){
         return api.get('api/auth/message', {params: {data}})
-            .then(res => {
-                //console.log(res);                    
+            .then(res => {                                    
                 commit('SET_MESSAGES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_MSG_OUT({commit}, data){
         return api.get('api/auth/msg_out', {params: {data}})
-            .then(res => {
-                //console.log(res);                    
+            .then(res => {                                    
                 commit('SET_MESSAGES', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_MSG_IN({commit}, data){
         return api.get('api/auth/msg_in', {params: {data}})
-            .then(res => {
-                //console.log(res);                    
+            .then(res => {                                    
                 commit('SET_MESSAGES_IN', res.data);                    
                 return res;
             })                
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_COUNTMESSAGE({commit}, data){
         return api.get('api/auth/msg_in', {params: {data}})
-            .then(res => {
-                //console.log(res);                    
+            .then(res => {                                    
                 commit('SET_COUNTMESSAGE', res.data);                    
                 return res;
             })                
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_COUNTMESSAGE_USER({commit}, data){
         return api.get('api/auth/message_in', {params: {data}})
-            .then(res => {
-                //console.log(res);                    
+            .then(res => {                                    
                 commit('SET_COUNTMESSAGE', res.data);                    
                 return res;
             })                
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
     GET_MESSAGES_IN({commit}, data){
         return api.get('api/auth/message_in', {params: {data}})
-            .then(res => {
-                //console.log(res);                    
+            .then(res => {                                    
                 commit('SET_MESSAGES_IN', res.data);                    
                 return res;
             })
-            .catch((error) => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     }, 
     CREATE_MESSAGE({dispatch}, data){            
         return api.post('api/auth/message', data)
@@ -121,10 +94,7 @@ let actions = {
                 //dispatch('GET_MESSAGES');
                 return res;
             })
-            .catch(error => {
-                console.log(error);
-                return error;
-            })
+            .catch(error => { console.log(error); return error; })
     },
 }
 

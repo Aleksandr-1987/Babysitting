@@ -49,6 +49,14 @@ use App\Http\Controllers\forms\FormJoboptionController;
 use App\Http\Controllers\forms\FormTypeworkController;
 use App\Http\Controllers\forms\BabyController;
 
+use App\Http\Controllers\forms\NurseController;
+use App\Http\Controllers\forms\FormDiagnoseController;
+use App\Http\Controllers\forms\FormNursedutieController;
+use App\Http\Controllers\forms\FormNurseskillController;
+use App\Http\Controllers\forms\FormNursetypeworkController;
+use App\Http\Controllers\forms\FormNurseworklocationController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -104,7 +112,14 @@ function ($router) {
         Route::resource('/formeducation', FormEducationController::class);
         Route::resource('/formjoboption', FormJoboptionController::class);
         Route::resource('/formtypework', FormTypeworkController::class);
-        Route::resource('/baby', BabyController::class);        
+        Route::resource('/baby', BabyController::class); 
+        
+        Route::resource('/nurse', NurseController::class);
+        Route::resource('/formdiagnose', FormDiagnoseController::class);
+        Route::resource('/formnursedutie', FormNursedutieController::class);
+        Route::resource('/formnurseskill', FormNurseskillController::class);
+        Route::resource('/formnursetypework', FormNursetypeworkController::class);
+        Route::resource('/formnurseworklocation', FormNurseworklocationController::class);
     });    
 });
 

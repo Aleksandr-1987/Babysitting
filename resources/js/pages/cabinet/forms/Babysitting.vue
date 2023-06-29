@@ -132,11 +132,11 @@ export default {
     },
     mounted() {
         this.GET_TOKEN(); this.GET_USER(); this.GET_BABY(this.user.id);
-        if(!this.baby){
+        //if(!this.baby){
             this.GET_LANGUAGES(); this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_EDUCATIONS(); this.GET_TYPEOFWORKS();
             this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS(); this.GET_CHILDRENS(); this.GET_BABYSITTINGDUTIES();
             this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();
-        }                      
+        //}                      
     },
     computed: {
         ...mapState([
