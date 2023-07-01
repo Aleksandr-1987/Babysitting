@@ -74,7 +74,7 @@ let actions = {
         return api.post('api/auth/logout')
             .then((res) => {                    
                 localStorage.removeItem('access_token');
-                localStorage.removeItem('user');
+                localStorage.removeItem('user');                
                 localStorage.removeItem('user_image');
                 localStorage.removeItem('admin_id');
                 commit('SET_TOKEN', '');
@@ -93,7 +93,7 @@ let actions = {
         return axios.post('api/auth/login', data)
             .then((res) => {                
                 localStorage.access_token = res.data[0].original.access_token
-                localStorage.user = JSON.stringify(res.data[1].original)
+                localStorage.user = JSON.stringify(res.data[1].original)                
                 localStorage.user_image = res.data[1].original.image;
                 dispatch('GET_TOKEN'); dispatch('GET_PHOTO'); dispatch('GET_USER');
                 router.push({name: "Account"});
@@ -123,7 +123,7 @@ let actions = {
         return axios.post('api/user', data)
             .then((res) => {                
                 localStorage.access_token = res.data.access_token
-                localStorage.user = JSON.stringify(res.data.user)
+                localStorage.user = JSON.stringify(res.data.user)                
                 dispatch('GET_USER');
                 router.push({name: "Account"});                                      
                 return res;

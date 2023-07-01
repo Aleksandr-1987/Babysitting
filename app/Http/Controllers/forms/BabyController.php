@@ -95,6 +95,7 @@ class BabyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Baby::where('user_id', '=', $id)->delete();
+        return response()->json('Удаление анкеты прошло успешно.');
     }
 }

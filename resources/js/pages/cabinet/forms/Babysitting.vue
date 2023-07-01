@@ -91,7 +91,8 @@
     </form>    
     
     <div>{{ baby }}</div> 
-    <span class="category_change_btn" @click.prevent="change_baby()">Изменить анкету</span>
+    <span v-if="baby" class="category_change_btn" @click.prevent="change_baby()">Изменить анкету</span>
+    <span v-if="baby" class="category_change_btn red" @click.prevent="delete_baby()">Удалить анкету</span>
 </template>
 <script>
 import {mapActions, mapState} from 'vuex';
@@ -116,7 +117,7 @@ export default {
         ...mapActions([
             'GET_TOKEN', 'GET_USER', 'GET_LANGUAGES', 'GET_EXPERIENCES', 'GET_RECOMMENDATIONS', 'GET_EDUCATIONS',
             'GET_TYPEOFWORKS', 'GET_JOBOPTIONS', 'GET_WORKPERIODS', 'GET_EMPLOYMENTS', 'GET_CHILDRENS', 'GET_BABYSITTINGDUTIES',
-            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'GET_AGEGROUPS', 'CREATE_BABY', 'GET_BABY' 
+            'GET_HOURLYPAYMENTS', 'GET_MONTHLYPAYMENTS', 'GET_AGEGROUPS', 'CREATE_BABY', 'GET_BABY', 'DELETE_BABY' 
         ]),
         back() {
             this.$router.push({name: "Account"})
@@ -127,7 +128,10 @@ export default {
             this.CREATE_BABY([this.anketa, this.anketalanguages, this.anketaeducations, this.anketatypeworks, this.anketajoboptions, this.anketaduties, this.anketaagegroups]);
         },
         change_baby() {
-            this.$router.push({name: "Change-babysitting"})
+            this.$router.push({name: "Change-babysitting"});
+        },
+        delete_baby() {
+            this.DELETE_BABY([this.baby.user_id, this.baby.id]);
         }
     },
     mounted() {

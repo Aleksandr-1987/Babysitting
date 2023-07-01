@@ -109,6 +109,12 @@ export const routes = [
         meta: {layout: 'Cabinet'},
         component: () =>import('../pages/cabinet/forms/Nurse.vue')
     },
+    {
+        name: 'Change-nurse',
+        path: '/change-nurse',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/forms/Change-nurse.vue')
+    },
     /*{
         name: 'Change-user',
         path: '/change-user',

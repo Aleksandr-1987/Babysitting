@@ -15,9 +15,11 @@ class NurseController extends Controller
     public function index(Request $request)
     {
         $nurse = Nurse::where('user_id', $request["data"])->first();
-        if($nurse) { return new NurseResource($nurse); }
-        else { return null; }
-        //return $nurse;
+        if($nurse) { 
+            return new NurseResource($nurse); 
+            //return $nurse;
+        }
+        else { return null; }        
     }
 
     /**
@@ -92,6 +94,7 @@ class NurseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Nurse::where('user_id', '=', $id)->delete();
+        return response()->json('Удаление анкеты прошло успешно.');
     }
 }

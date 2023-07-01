@@ -55,7 +55,8 @@ use App\Http\Controllers\forms\FormNursedutieController;
 use App\Http\Controllers\forms\FormNurseskillController;
 use App\Http\Controllers\forms\FormNursetypeworkController;
 use App\Http\Controllers\forms\FormNurseworklocationController;
-
+use App\Http\Controllers\forms\FormNurseeducationController;
+use App\Http\Controllers\forms\FormNursejoboptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +121,8 @@ function ($router) {
         Route::resource('/formnurseskill', FormNurseskillController::class);
         Route::resource('/formnursetypework', FormNursetypeworkController::class);
         Route::resource('/formnurseworklocation', FormNurseworklocationController::class);
+        Route::resource('/formnurseeducation', FormNurseeducationController::class);
+        Route::resource('/formnursejoboption', FormNursejoboptionController::class);
     });    
 });
 

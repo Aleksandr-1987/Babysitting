@@ -143,23 +143,21 @@ export default {
             }        
             for (let i = 0; i < this.baby.Duties.length; i++) {            
                 this.anketaduties.push(this.baby.Duties[i].id);
-            }
-        }
+            }            
+        },        
     },
     mounted() {
-        this.GET_TOKEN(); this.GET_USER(); this.GET_BABY(this.user.id);
-        
+        this.GET_TOKEN(); this.GET_USER(); this.GET_BABY(this.user.id);   
         this.GET_LANGUAGES(); this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_EDUCATIONS(); this.GET_TYPEOFWORKS();
         this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS(); this.GET_CHILDRENS(); this.GET_BABYSITTINGDUTIES();
-        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();    
-        
-        setTimeout(this.setItems, 500);             
+        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();
+        setTimeout(this.setItems, 500);                    
     },
     computed: {
         ...mapState([
             'user', 'baby',
             'languages', 'experiences', 'recommendations', 'educations', 'typeofworks', 'joboptions', 'workperiods',
-            'employments', 'childrens', 'babysittingduties', 'hourlypayments', 'monthlypayments', 'agegroups' 
+            'employments', 'childrens', 'babysittingduties', 'hourlypayments', 'monthlypayments', 'agegroups',             
         ])
     },
 }

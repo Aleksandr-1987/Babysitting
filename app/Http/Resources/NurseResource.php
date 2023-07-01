@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 use App\Models\forms\Nurse;
-use App\Models\forms\FormEducation;
-use App\Http\Resources\FormEducationResource;
-use App\Models\forms\FormJoboption;
-use App\Http\Resources\FormJoboptionResource;
+use App\Models\forms\FormNurseeducation;
+use App\Http\Resources\FormNurseeducationResource;
+use App\Models\forms\FormNursejoboption;
+use App\Http\Resources\FormNursejoboptionResource;
 use App\Models\forms\FormDiagnose;
 use App\Http\Resources\FormDiagnoseResource;
 use App\Models\forms\FormNursedutie;
@@ -30,8 +30,8 @@ class NurseResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        //$education = FormEducation::where('form_id', $this->id)->get(); 
-        //$joboption = FormJoboption::where('form_id', $this->id)->get();
+        $education = FormNurseeducation::where('form_id', $this->id)->get(); 
+        $joboption = FormNursejoboption::where('form_id', $this->id)->get();
         $typework = FormNursetypework::where('form_id', $this->id)->get();         
         $dutie = FormNursedutie::where('form_id', $this->id)->get();        
         $diagnose = FormDiagnose::where('form_id', $this->id)->get();
@@ -41,7 +41,7 @@ class NurseResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'nurse_exp' => $this->nurce_exp,
+            'nurse_exp' => $this->nurse_exp,
             'experience' => $this->get_experience->title,
             'recommendation' => $this->get_recommendation->title,            
             'education_about' => $this->education_about,
@@ -49,11 +49,11 @@ class NurseResource extends JsonResource
             'employment' => $this->get_employment->title,            
             'hourpay' => $this->get_hourpay->title,
             'monthpay' => $this->get_monthpay->title,            
-            'additional' => Nurse::where('user_id', $this->user_id)->value('additional'),            
+            'additional' => Nurse::where('user_id', $this->user_id)->value('additional'),                       
             'confirmed' => $this->confirmed,
             
-            //'Educations' => FormEducationResource::collection($education),            
-            //'Joboptions' => FormJoboptionResource::collection($joboption),
+            'Educations' => FormNurseeducationResource::collection($education),            
+            'Joboptions' => FormNursejoboptionResource::collection($joboption),
             'Typeworks' => FormNursetypeworkResource::collection($typework),
             'Duties' => FormNursedutieResource::collection($dutie),
             'Diagnoses' => FormDiagnoseResource::collection($diagnose),
