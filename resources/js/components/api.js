@@ -1,5 +1,5 @@
 import axios from "axios";
-import router from "../components/router";
+import router from "./router/router";
 
 const api = axios.create();
 

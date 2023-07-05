@@ -1,5 +1,5 @@
 import api from "../api";
-import router from "../router";
+import router from "../router/router";
     
 let state = {
     admin_id: 0,
