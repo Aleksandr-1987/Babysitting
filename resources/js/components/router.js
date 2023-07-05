@@ -104,6 +104,12 @@ export const routes = [
         component: () =>import('../pages/cabinet/forms/Housekeeper.vue')
     },
     {
+        name: 'Change-housekeeper',
+        path: '/change-housekeeper',
+        meta: {layout: 'Cabinet'},
+        component: () =>import('../pages/cabinet/forms/Change-housekeeper.vue')
+    },
+    {
         name: 'Nurse',
         path: '/nurse',
         meta: {layout: 'Cabinet'},

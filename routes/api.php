@@ -58,6 +58,12 @@ use App\Http\Controllers\forms\FormNurseworklocationController;
 use App\Http\Controllers\forms\FormNurseeducationController;
 use App\Http\Controllers\forms\FormNursejoboptionController;
 
+use App\Http\Controllers\forms\KeeperController;
+use App\Http\Controllers\forms\KeeperdutieController;
+use App\Http\Controllers\forms\KeeperjoboptionController;
+use App\Http\Controllers\forms\KeeperpreferenceController;
+use App\Http\Controllers\forms\KeepertypeworkController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -123,6 +129,12 @@ function ($router) {
         Route::resource('/formnurseworklocation', FormNurseworklocationController::class);
         Route::resource('/formnurseeducation', FormNurseeducationController::class);
         Route::resource('/formnursejoboption', FormNursejoboptionController::class);
+
+        Route::resource('/keeper', KeeperController::class);
+        Route::resource('/keeperdutie', KeeperdutieController::class);
+        Route::resource('/keeperjoboption', KeeperjoboptionController::class);
+        Route::resource('/keeperpreference', KeeperpreferenceController::class);
+        Route::resource('/keepertypework', KeepertypeworkController::class);
     });    
 });
 

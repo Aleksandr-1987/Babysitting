@@ -1,6 +1,6 @@
 <template> 
     <div @click.prevent="back" class="category_change_btn">Назад</div>
-    <div class="category_title">Изменение анкета для сиделки:</div>   
+    <div class="category_title">Изменение анкеты для сиделки:</div>   
     <form @submit.prevent="changeForm" class="login_form">   
         <div>Измените Ваш опыт работы с пристарелыми:</div>
         <textarea v-model="nurse.nurse_exp" required class="login_form_item" placeholder="about"></textarea>
@@ -111,7 +111,7 @@ export default {
         },        
         changeForm() {            
             this.CHANGE_NURSE([this.nurse, this.anketaeducations, this.anketajoboptions, this.anketadiagnoses, this.anketaduties, this.anketaskills, this.anketatypeworks, this.anketaworklocations]);
-            this.$router.push({name: "Nurse"})
+            this.$router.push({name: "Nurse"})            
         },
         setItems() {
             for (let i = 0; i < this.nurse.Skills.length; i++) {            
