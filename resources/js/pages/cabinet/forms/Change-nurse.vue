@@ -6,12 +6,12 @@
         <textarea v-model="nurse.nurse_exp" required class="login_form_item" placeholder="about"></textarea>
         <div>Отметьте умения и навыки, которыми вы владеете в работе с престарелыми:</div>
         <div v-for="post in nursingskills" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaskills">
+            <input type="checkbox" v-bind:value="post.id" v-model="nurse_options.anketaskills">
             {{ post.title }}                                    
         </div>
         <div>Отметьте диагнозы пациентов, с которыми вам приходилось работать:</div>
         <div v-for="post in diagnoses" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketadiagnoses">
+            <input type="checkbox" v-bind:value="post.id" v-model="nurse_options.anketadiagnoses">
             {{ post.title }}                                    
         </div>
         <div>Укажите свой опыт работы с пристарелыми:</div>
@@ -28,19 +28,19 @@
         </select>
         <div>Укажите Ваше образование:</div>
         <div v-for="post in educations" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaeducations">
+            <input type="checkbox" v-bind:value="post.id" v-model="nurse_options.anketaeducations">
             {{ post.title }}                                    
         </div>
         <div>Подробнее о полученном образовании:</div>
         <textarea v-model="nurse.education_about" required class="login_form_item" placeholder="about"></textarea>
         <div>Какую работу вы ищите:</div>
         <div v-for="post in nursetypeofworks" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketatypeworks">
+            <input type="checkbox" v-bind:value="post.id" v-model="nurse_options.anketatypeworks">
             {{ post.title }}                                    
         </div>
         <div>Приемлемые варианты работы:</div>
         <div v-for="post in joboptions" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketajoboptions">
+            <input type="checkbox" v-bind:value="post.id" v-model="nurse_options.anketajoboptions">
             {{ post.title }}                                    
         </div>
         <div>Укажите период работы:</div>
@@ -57,12 +57,12 @@
         </select>
         <div>Где Вы предпочитаете работать :</div>
         <div v-for="post in worklocations" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaworklocations">
+            <input type="checkbox" v-bind:value="post.id" v-model="nurse_options.anketaworklocations">
             {{ post.title }}                                    
         </div>         
         <div>Какие обязанности вы готовы выполнять:</div>
         <div v-for="post in nurseduties" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaduties">
+            <input type="checkbox" v-bind:value="post.id" v-model="nurse_options.anketaduties">
             {{ post.title }}                                    
         </div>
         <div>Ожидаемая почасовая оплата:</div>
@@ -87,18 +87,7 @@
 <script>
 import {mapActions, mapState} from 'vuex';
 export default {
-    name: "Change-nurse",
-    data() {
-        return {            
-            anketaskills:[],
-            anketadiagnoses: [],            
-            anketaeducations:[], 
-            anketatypeworks:[],
-            anketajoboptions: [],
-            anketaduties: [],
-            anketaworklocations: [],            
-        }
-    },
+    name: "Change-nurse",    
     methods: {
         ...mapActions([
             'GET_TOKEN', 'GET_USER', 'GET_NURSE', 'GET_NURSINGSKILLS', 'GET_DIAGNOSES',
@@ -110,45 +99,21 @@ export default {
             this.$router.push({name: "Nurse"})
         },        
         changeForm() {            
-            this.CHANGE_NURSE([this.nurse, this.anketaeducations, this.anketajoboptions, this.anketadiagnoses, this.anketaduties, this.anketaskills, this.anketatypeworks, this.anketaworklocations]);
+            this.CHANGE_NURSE([this.nurse, this.nurse_options.anketaeducations, this.nurse_options.anketajoboptions, this.nurse_options.anketadiagnoses, this.nurse_options.anketaduties, this.nurse_options.anketaskills, this.nurse_options.anketatypeworks, this.nurse_options.anketaworklocations]);
             this.$router.push({name: "Nurse"})            
-        },
-        setItems() {
-            for (let i = 0; i < this.nurse.Skills.length; i++) {            
-                this.anketaskills.push(this.nurse.Skills[i].id);
-            }            
-            for (let i = 0; i < this.nurse.Diagnoses.length; i++) {            
-                this.anketadiagnoses.push(this.nurse.Diagnoses[i].id);
-            }
-            for (let i = 0; i < this.nurse.Educations.length; i++) {            
-                this.anketaeducations.push(this.nurse.Educations[i].id);
-            }
-            for (let i = 0; i < this.nurse.Typeworks.length; i++) {            
-                this.anketatypeworks.push(this.nurse.Typeworks[i].id);
-            }
-            for (let i = 0; i < this.nurse.Joboptions.length; i++) {            
-                this.anketajoboptions.push(this.nurse.Joboptions[i].id);
-            }        
-            for (let i = 0; i < this.nurse.Duties.length; i++) {            
-                this.anketaduties.push(this.nurse.Duties[i].id);
-            }
-            for (let i = 0; i < this.nurse.Worklocations.length; i++) {            
-                this.anketaworklocations.push(this.nurse.Worklocations[i].id);
-            }
-        }       
+        },               
     },
     mounted() {
         this.GET_TOKEN(); this.GET_USER(); this.GET_NURSE(this.user.id);
         this.GET_NURSINGSKILLS(); this.GET_DIAGNOSES(); this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_EDUCATIONS(); 
         this.GET_NURSETYPEOFWORKS(); this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS(); this.GET_WORKLOCATIONS();
-        this.GET_NURSEDUTIES(); this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS();         
-        setTimeout(this.setItems, 500);                             
+        this.GET_NURSEDUTIES(); this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS();                               
     },
     computed: {
         ...mapState([
             'user', 'nursingskills', 'diagnoses', 'experiences', 'recommendations', 'educations', 
             'nursetypeofworks', 'joboptions', 'workperiods', 'employments', 'worklocations',
-            'nurseduties', 'hourlypayments', 'monthlypayments', 'nurse' 
+            'nurseduties', 'hourlypayments', 'monthlypayments', 'nurse', 'nurse_options' 
         ])
     },
 }

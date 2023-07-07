@@ -18,12 +18,12 @@
         </select>
         <div>Какую работу вы ищите:</div>
         <div v-for="post in housekeepertypeofworks" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketatypeworks">
+            <input type="checkbox" v-bind:value="post.id" v-model="keeper_options.anketatypeworks">
             {{ post.title }}                                    
         </div>
         <div>Приемлемые варианты работы:</div>
         <div v-for="post in joboptions" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketajoboptions">
+            <input type="checkbox" v-bind:value="post.id" v-model="keeper_options.anketajoboptions">
             {{ post.title }}                                    
         </div>
         <div>Укажите период работы:</div>
@@ -40,12 +40,12 @@
         </select>
         <div>Вы предпочитаете:</div>
         <div v-for="post in housekeeperpreferences" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketarpreferences">
+            <input type="checkbox" v-bind:value="post.id" v-model="keeper_options.anketarpreferences">
             {{ post.title }}                                    
         </div>
         <div>Какие обязанности вы готовы выполнять:</div>
         <div v-for="post in housekeeperduties" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaduties">
+            <input type="checkbox" v-bind:value="post.id" v-model="keeper_options.anketaduties">
             {{ post.title }}                                    
         </div>
         <div>Можете ли вы обеспечить собственную технику для уборки:</div>
@@ -96,11 +96,7 @@ import {mapActions, mapState} from 'vuex';
 export default {
     name: "Change-housekeeper",
     data() {
-        return {                      
-            anketaduties: [],
-            anketarpreferences: [],          
-            anketatypeworks:[],
-            anketajoboptions: [],
+        return {            
             work: [
                 { value: 'Да' },
                 { value: 'Нет' }
@@ -118,39 +114,22 @@ export default {
             this.$router.push({name: "Housekeeper"})
         },        
         changeForm() {            
-            this.CHANGE_KEEPER([this.keeper, this.anketajoboptions, this.anketarpreferences, this.anketaduties, this.anketatypeworks]);
+            this.CHANGE_KEEPER([this.keeper, this.keeper_options.anketajoboptions, this.keeper_options.anketarpreferences, this.keeper_options.anketaduties, this.keeper_options.anketatypeworks]);
             this.$router.push({name: "Housekeeper"})
-        },
-        setItems() {            
-            for (let i = 0; i < this.keeper.Typeworks.length; i++) {            
-                this.anketatypeworks.push(this.keeper.Typeworks[i].id);
-            }
-            for (let i = 0; i < this.keeper.Joboptions.length; i++) {            
-                this.anketajoboptions.push(this.keeper.Joboptions[i].id);
-            }        
-            for (let i = 0; i < this.keeper.Duties.length; i++) {            
-                this.anketaduties.push(this.keeper.Duties[i].id);
-            }
-            for (let i = 0; i < this.keeper.Preferences.length; i++) {            
-                this.anketarpreferences.push(this.keeper.Preferences[i].id);
-            }
         }
     },
     mounted() {
-        this.GET_TOKEN(); this.GET_USER(); this.GET_KEEPER(this.user.id);
-        //if(!this.nurse){
-            this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_HOUSEKEEPERTYPEOFWORKS();
-            this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS();
-            this.GET_HOUSEKEEPERPREFERENCES(); this.GET_HOUSEKEEPERDUTIES();        
-            this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS();
-        //} 
-        setTimeout(this.setItems, 500);                             
+        this.GET_TOKEN(); this.GET_USER(); this.GET_KEEPER(this.user.id);        
+        this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_HOUSEKEEPERTYPEOFWORKS();
+        this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS();
+        this.GET_HOUSEKEEPERPREFERENCES(); this.GET_HOUSEKEEPERDUTIES();        
+        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS();                                     
     },
     computed: {
         ...mapState([
             'user', 'experiences', 'recommendations', 'housekeepertypeofworks',
             'joboptions', 'workperiods', 'employments', 'housekeeperpreferences',
-            'housekeeperduties', 'hourlypayments', 'monthlypayments', 'keeper' 
+            'housekeeperduties', 'hourlypayments', 'monthlypayments', 'keeper', 'keeper_options' 
         ])
     },
 }

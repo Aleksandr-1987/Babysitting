@@ -6,12 +6,12 @@
         <textarea v-model="baby.baby_exp" required class="login_form_item" placeholder="about"></textarea>
         <div>Измените опыт работы с детьми по возрастным группам:</div>
         <div v-for="post in agegroups" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaagegroups">
+            <input type="checkbox" v-bind:value="post.id" v-model="baby_options.anketaagegroups">
             {{ post.title }}                                    
         </div>
         <div>Измените знание иностранных языков:</div>
         <div v-for="post in languages" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketalanguages">
+            <input type="checkbox" v-bind:value="post.id" v-model="baby_options.anketalanguages">
             {{ post.title }}                                    
         </div>
         <div>Измените свой опыт работы с детьми:</div>
@@ -28,19 +28,19 @@
         </select>
         <div>Измените Ваше образование:</div>
         <div v-for="post in educations" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaeducations">
+            <input type="checkbox" v-bind:value="post.id" v-model="baby_options.anketaeducations">
             {{ post.title }}                                    
         </div>
         <div>Подробнее о полученном образовании:</div>
         <textarea v-model="baby.education_about" required class="login_form_item" placeholder="about"></textarea>
         <div>Какую работу вы ищите:</div>
         <div v-for="post in typeofworks" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketatypeworks">
+            <input type="checkbox" v-bind:value="post.id" v-model="baby_options.anketatypeworks">
             {{ post.title }}                                    
         </div>
         <div>Приемлемые варианты работы:</div>
         <div v-for="post in joboptions" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketajoboptions">
+            <input type="checkbox" v-bind:value="post.id" v-model="baby_options.anketajoboptions">
             {{ post.title }}                                    
         </div>
         <div>Измените период работы:</div>
@@ -69,7 +69,7 @@
         </select>
         <div>Какие обязанности вы готовы выполнять:</div>
         <div v-for="post in babysittingduties" :key="post.id" class="language_item">
-            <input type="checkbox" v-bind:value="post.id" v-model="anketaduties">
+            <input type="checkbox" v-bind:value="post.id" v-model="baby_options.anketaduties">
             {{ post.title }}                                    
         </div>
         <div>Ожидаемая почасовая оплата:</div>
@@ -98,13 +98,7 @@ import {mapActions, mapState} from 'vuex';
 export default {
     name: "Change-babysitting",
     data() {
-        return {            
-            anketalanguages:[],
-            anketaeducations:[], 
-            anketatypeworks:[],
-            anketajoboptions: [],
-            anketaduties: [],
-            anketaagegroups: [],
+        return {          
             work: [
                 { value: 'Да' },
                 { value: 'Нет' }
@@ -122,40 +116,19 @@ export default {
             this.$router.push({name: "Babysitting"})
         },
         changeForm() {            
-            this.CHANGE_BABY([this.baby, this.anketalanguages, this.anketaeducations, this.anketatypeworks, this.anketajoboptions, this.anketaduties, this.anketaagegroups]);
+            this.CHANGE_BABY([this.baby, this.baby_options.anketalanguages, this.baby_options.anketaeducations, this.baby_options.anketatypeworks, this.baby_options.anketajoboptions, this.baby_options.anketaduties, this.baby_options.anketaagegroups]);
             this.$router.push({name: "Babysitting"})
-        },
-        setItems() {
-            for (let i = 0; i < this.baby.Agegroups.length; i++) {            
-                this.anketaagegroups.push(this.baby.Agegroups[i].id);
-            }            
-            for (let i = 0; i < this.baby.Languages.length; i++) {            
-                this.anketalanguages.push(this.baby.Languages[i].id);
-            }
-            for (let i = 0; i < this.baby.Educations.length; i++) {            
-                this.anketaeducations.push(this.baby.Educations[i].id);
-            }
-            for (let i = 0; i < this.baby.Typeworks.length; i++) {            
-                this.anketatypeworks.push(this.baby.Typeworks[i].id);
-            }
-            for (let i = 0; i < this.baby.Joboptions.length; i++) {            
-                this.anketajoboptions.push(this.baby.Joboptions[i].id);
-            }        
-            for (let i = 0; i < this.baby.Duties.length; i++) {            
-                this.anketaduties.push(this.baby.Duties[i].id);
-            }            
-        },        
+        },                
     },
     mounted() {
         this.GET_TOKEN(); this.GET_USER(); this.GET_BABY(this.user.id);   
         this.GET_LANGUAGES(); this.GET_EXPERIENCES(); this.GET_RECOMMENDATIONS(); this.GET_EDUCATIONS(); this.GET_TYPEOFWORKS();
         this.GET_JOBOPTIONS(); this.GET_WORKPERIODS(); this.GET_EMPLOYMENTS(); this.GET_CHILDRENS(); this.GET_BABYSITTINGDUTIES();
-        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();
-        setTimeout(this.setItems, 500);                    
+        this.GET_HOURLYPAYMENTS(); this.GET_MONTHLYPAYMENTS(); this.GET_AGEGROUPS();                            
     },
     computed: {
         ...mapState([
-            'user', 'baby',
+            'user', 'baby', 'baby_options',
             'languages', 'experiences', 'recommendations', 'educations', 'typeofworks', 'joboptions', 'workperiods',
             'employments', 'childrens', 'babysittingduties', 'hourlypayments', 'monthlypayments', 'agegroups',             
         ])

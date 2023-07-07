@@ -2,11 +2,41 @@ import api from "../api";
 
 let state = {
     nurse: {},
+    nurse_options: {}
 };
 
 let mutations = {
     SET_NURSE: (state, res) => {
-        state.nurse = res;            
+        state.nurse = res;
+        let temp = [];
+        for (let i = 0; i < res.Skills.length; i++) {            
+            temp.push(res.Skills[i].id);
+        }  
+        state.nurse_options.anketaskills = temp; temp = [];          
+        for (let i = 0; i < res.Diagnoses.length; i++) {            
+            temp.push(res.Diagnoses[i].id);
+        }
+        state.nurse_options.anketadiagnoses = temp; temp = [];
+        for (let i = 0; i < res.Educations.length; i++) {            
+            temp.push(res.Educations[i].id);
+        }
+        state.nurse_options.anketaeducations = temp; temp = [];
+        for (let i = 0; i < res.Typeworks.length; i++) {            
+            temp.push(res.Typeworks[i].id);
+        }
+        state.nurse_options.anketatypeworks = temp; temp = [];
+        for (let i = 0; i < res.Joboptions.length; i++) {            
+            temp.push(res.Joboptions[i].id);
+        }
+        state.nurse_options.anketajoboptions = temp; temp = [];        
+        for (let i = 0; i < res.Duties.length; i++) {            
+            temp.push(res.Duties[i].id);
+        }
+        state.nurse_options.anketaduties = temp; temp = [];
+        for (let i = 0; i < res.Worklocations.length; i++) {            
+            temp.push(res.Worklocations[i].id);
+        } 
+        state.nurse_options.anketaworklocations = temp; temp = [];           
     }, 
 };
 

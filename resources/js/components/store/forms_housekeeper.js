@@ -1,12 +1,30 @@
 import api from "../api";
 
 let state = {   
-    keeper: {},                    
+    keeper: {},
+    keeper_options: {},                    
 };
     
 let mutations = { 
     SET_KEEPER: (state, res) => {
-        state.keeper = res;            
+        state.keeper = res;
+        let temp = [];
+        for (let i = 0; i < res.Typeworks.length; i++) {            
+            temp.push(res.Typeworks[i].id);
+        }
+        state.keeper_options.anketatypeworks = temp; temp = [];
+        for (let i = 0; i < res.Joboptions.length; i++) {            
+            temp.push(res.Joboptions[i].id);
+        }
+        state.keeper_options.anketajoboptions = temp; temp = [];        
+        for (let i = 0; i < res.Duties.length; i++) {            
+            temp.push(res.Duties[i].id);
+        }
+        state.keeper_options.anketaduties = temp; temp = [];
+        for (let i = 0; i < res.Preferences.length; i++) {            
+            temp.push(res.Preferences[i].id);
+        } 
+        state.keeper_options.anketarpreferences = temp; temp = [];           
     },            
 };
 

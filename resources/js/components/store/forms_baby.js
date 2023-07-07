@@ -2,11 +2,37 @@ import api from "../api";
 
 let state = {
     baby: {},
+    baby_options: {}
 };
 
 let mutations = {
     SET_BABY: (state, res) => {
-        state.baby = res;                    
+        state.baby = res;
+        let temp = [];
+        for (let i = 0; i < res.Agegroups.length; i++) {            
+            temp.push(res.Agegroups[i].id);
+        }  
+        state.baby_options.anketaagegroups = temp; temp = [];              
+        for (let i = 0; i < res.Languages.length; i++) {            
+            temp.push(res.Languages[i].id);
+        }
+        state.baby_options.anketalanguages = temp; temp = [];
+        for (let i = 0; i < res.Educations.length; i++) {            
+            temp.push(res.Educations[i].id);
+        }
+        state.baby_options.anketaeducations = temp; temp = [];
+        for (let i = 0; i < res.Typeworks.length; i++) {            
+            temp.push(res.Typeworks[i].id);
+        }
+        state.baby_options.anketatypeworks = temp; temp = [];
+        for (let i = 0; i < res.Joboptions.length; i++) {            
+            temp.push(res.Joboptions[i].id);
+        }   
+        state.baby_options.anketajoboptions = temp; temp = [];     
+        for (let i = 0; i < res.Duties.length; i++) {            
+            temp.push(res.Duties[i].id);
+        }
+        state.baby_options.anketaduties = temp; temp = [];
     },
 };
 
