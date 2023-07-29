@@ -2,7 +2,7 @@ import api from "../api";
 
 let state = {
     countmessage: 0,
-    messages: {},
+    messages: {}, //out
     messages_in: {}
 };
 
@@ -15,7 +15,7 @@ let mutations = {
             }
         }                
     },
-    SET_MESSAGES: (state, res) => {
+    SET_MESSAGES: (state, res) => { //out
         state.messages = res;            
     },
     SET_MESSAGES_IN: (state, res) => {
@@ -31,24 +31,8 @@ let mutations = {
     },
 };
 
-let actions = {
-    DELETE_MESSAGE({dispatch}, data){                       
-        return api.post('api/auth/message/' + data, {_method: 'DELETE'})
-            .then((res) => {
-                dispatch('GET_MESSAGES');                  
-                return res;
-            })
-            .catch(error => { console.log(error); return error; })
-    },        
-    GET_MESSAGES({commit}, data){
-        return api.get('api/auth/message', {params: {data}})
-            .then(res => {                                    
-                commit('SET_MESSAGES', res.data);                    
-                return res;
-            })
-            .catch(error => { console.log(error); return error; })
-    },
-    GET_MSG_OUT({commit}, data){
+let actions = {   
+    GET_MSG_OUT({commit}, data){  // admin
         return api.get('api/auth/msg_out', {params: {data}})
             .then(res => {                                    
                 commit('SET_MESSAGES', res.data);                    
@@ -56,7 +40,7 @@ let actions = {
             })
             .catch(error => { console.log(error); return error; })
     },
-    GET_MSG_IN({commit}, data){
+    GET_MSG_IN({commit}, data){  // admin
         return api.get('api/auth/msg_in', {params: {data}})
             .then(res => {                                    
                 commit('SET_MESSAGES_IN', res.data);                    
@@ -64,7 +48,7 @@ let actions = {
             })                
             .catch(error => { console.log(error); return error; })
     },
-    GET_COUNTMESSAGE({commit}, data){
+    GET_COUNTMESSAGE({commit}, data){    // admin
         return api.get('api/auth/msg_in', {params: {data}})
             .then(res => {                                    
                 commit('SET_COUNTMESSAGE', res.data);                    
@@ -72,12 +56,13 @@ let actions = {
             })                
             .catch(error => { console.log(error); return error; })
     },
-    GET_COUNTMESSAGE_USER({commit}, data){
-        return api.get('api/auth/message_in', {params: {data}})
+
+    GET_MESSAGES({commit}, data){  // out 
+        return api.get('api/auth/message', {params: {data}})
             .then(res => {                                    
-                commit('SET_COUNTMESSAGE', res.data);                    
+                commit('SET_MESSAGES', res.data);                    
                 return res;
-            })                
+            })
             .catch(error => { console.log(error); return error; })
     },
     GET_MESSAGES_IN({commit}, data){
@@ -87,11 +72,28 @@ let actions = {
                 return res;
             })
             .catch(error => { console.log(error); return error; })
-    }, 
+    },
+    GET_COUNTMESSAGE_USER({commit}, data){
+        return api.get('api/auth/message_in', {params: {data}})
+            .then(res => {                                    
+                commit('SET_COUNTMESSAGE', res.data);                    
+                return res;
+            })                
+            .catch(error => { console.log(error); return error; })
+    },    
+
     CREATE_MESSAGE({dispatch}, data){            
         return api.post('api/auth/message', data)
             .then((res) => {                    
                 //dispatch('GET_MESSAGES');
+                return res;
+            })
+            .catch(error => { console.log(error); return error; })
+    },
+    DELETE_MESSAGE({dispatch}, data){  // надо сделать                     
+        return api.post('api/auth/message/' + data, {_method: 'DELETE'})
+            .then((res) => {
+                dispatch('GET_MESSAGES');                  
                 return res;
             })
             .catch(error => { console.log(error); return error; })
